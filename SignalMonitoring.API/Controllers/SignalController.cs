@@ -32,7 +32,7 @@ namespace SignalMonitoring.API.Controllers
             var saveResult = await m_signalService.SaveSignalAsync(inputModel);
 
             //if you can save the signal you can notify all clients by using SignalHub
-            if (true)
+            if (saveResult)
             {
                 SignalViewModel signalViewModel = new SignalViewModel()
                 {
