@@ -1,29 +1,23 @@
-.example-icon {
-    padding: 0 14px;
-  }
-  
-  .example-spacer {
-    flex: 1 1 auto;
-  }
+.example-spacer {
+  flex: 1 1 auto;
+}
 
-  .example-label {
-    display: table-cell;
-    font-size: 14px;
-    margin-left: 8px;
-    width: 120px;
-  }
-  
-  .example-button-row {
-    display: table-cell;
-  }
-  
-  .example-button-row button {
-    display: table-cell;
-    margin-right: 8px;
-  }
-  
-  .example-flex-container {
-    display: flex;
-    justify-content: space-between;
-    width: 480px;
-  }
+#wrapper
+{
+    height: 100%;
+    min-height: 100%;
+    background-color: #424242;
+}
+
+.center {
+  display: flex;
+  background-color: #424242;
+  justify-content: center;
+  align-items: center;
+  height: 90%;
+}
+
+.heightDiv {
+height: 100%
+}
+

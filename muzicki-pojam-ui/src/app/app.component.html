@@ -1,4 +1,5 @@
-<mat-toolbar>
+<div id="wrapper">
+  <mat-toolbar>
     <mat-toolbar-row>
         <span>Second Line</span>
         <span class="example-spacer"></span>
@@ -9,5 +10,8 @@
         <mat-icon>logout</mat-icon>
       </button>
       </mat-toolbar-row>
-</mat-toolbar>
-<div class="center"><router-outlet></router-outlet></div>
+  </mat-toolbar>
+  <div class="center">
+    <router-outlet></router-outlet>
+  </div>
+</div>

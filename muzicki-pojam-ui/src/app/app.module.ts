@@ -17,6 +17,8 @@ import { AuthService} from './auth.service'
 import { AuthInterceptor } from "./auth.interceptor";
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component'
+import {MatExpansionModule} from '@angular/material/expansion';
+
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { LoginComponent } from './login/login.component'
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
+    MatExpansionModule
   ],
   providers: [AuthService, {
     provide: HTTP_INTERCEPTORS,

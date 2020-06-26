@@ -1,1 +1,26 @@
-<p>home works!</p>
+<div class = "center">
+<mat-card>
+    <mat-card-content>
+        <mat-expansion-panel *ngFor="let index of numbers; 
+        let i = index" [expanded]="step === i" (opened)="setStep(i)" hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{i + 1}}. pesma
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+        
+            <mat-form-field>
+              <mat-label>First name</mat-label>
+              <input matInput (keyup.enter)="nextStep()" appFocus> 
+            </mat-form-field>
+        
+            <mat-action-row>
+              <button mat-button color="primary" (click)="nextStep()">Next</button>
+            </mat-action-row>
+          </mat-expansion-panel>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button color="primary">Finish</button>
+    </mat-card-actions>
+</mat-card>
+</div>
