@@ -1,21 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
+using SignalMonitoring.API.Services;
 
 namespace SignalMonitoring.API.Controllers
 {
-    [Route("api/[controller]"),ApiController]
+    [Route("api/[controller]"), ApiController]
     public class HomeController : ControllerBase
     {
-        [Authorize]
-        [HttpGet]
-        public async Task<IActionResult> GetQuiz()
+        private ITermService m_termService;
+
+        public HomeController(ITermService termService)
         {
-            return Ok();
+            m_termService = termService;
+        }
+
+        //[Authorize]
+        [HttpGet]
+        public async Task<IActionResult> GetTerms()
+        {
+            return Ok(m_termService.GetRandomTerm());
         }
     }
 }

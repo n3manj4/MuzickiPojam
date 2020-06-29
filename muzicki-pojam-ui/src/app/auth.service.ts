@@ -41,7 +41,7 @@ export class AuthService {
 
   home(){
       console.log('home')
-      this.http.get('http://localhost:63291/api/home').subscribe(result => {
+      this.http.get<string>('http://localhost:63291/api/home').subscribe(result => {
         console.log(result)
       })
     }

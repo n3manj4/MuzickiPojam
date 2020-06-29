@@ -2,5 +2,13 @@
 {
     overflow-y: auto;
     height: 300px;
-    padding: 1rem
+    padding: 1rem;
+    width: 300%;
+    transform:translateX(-25%);
+}
+
+#title {
+    color: white; 
+    text-align: center; 
+    font-size: 300%;
 }

@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using SignalMonitoring.API.Models;
+﻿using SignalMonitoring.API.Models;
 using SignalMonitoring.API.Persistence;
+using System;
+using System.Threading.Tasks;
 
 namespace SignalMonitoring.API.Services
 {
@@ -23,11 +21,12 @@ namespace SignalMonitoring.API.Services
                 //at this point we assume a signal arrives only one time and it's uniue
                 SignalDataModel signalModel = new SignalDataModel()
                 {
-                    CustomerName = inputModel.CustomerName, 
+                    CustomerName = inputModel.CustomerName,
                     Description = inputModel.Description,
-                    AccessCode = inputModel.AccessCode, 
+                    AccessCode = inputModel.AccessCode,
                     Area = inputModel.Area,
-                    Zone = inputModel.Zone, SignalDate = DateTime.Now
+                    Zone = inputModel.Zone,
+                    SignalDate = DateTime.Now
                 };
 
                 //execute some business rules according to your cases.

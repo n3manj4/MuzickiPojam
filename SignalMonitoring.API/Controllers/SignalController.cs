@@ -5,8 +5,6 @@ using SignalMonitoring.API.Models;
 using SignalMonitoring.API.Services;
 using System;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 
 namespace SignalMonitoring.API.Controllers
 {

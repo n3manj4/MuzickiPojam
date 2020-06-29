@@ -14,8 +14,8 @@ export class AppComponent implements OnInit {
   constructor(public auth: AuthService, private signalRService: SignalRService) {}
 
   ngOnInit() {
-   //this.signalRService.signalReceived.subscribe((signal: SignalViewModel) => {
-      //this.signalList.push(signal);
-    //});
+   this.signalRService.signalReceived.subscribe((signal: SignalViewModel) => {
+      this.signalList.push(signal);
+    });
   }
 }

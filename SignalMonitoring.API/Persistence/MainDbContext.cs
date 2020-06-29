@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using IdentityUser = Microsoft.AspNetCore.Identity.IdentityUser;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace SignalMonitoring.API.Persistence
 {
@@ -8,9 +6,11 @@ namespace SignalMonitoring.API.Persistence
     {
         public MainDbContext(DbContextOptions<MainDbContext> options) : base(options)
         {
-            
+
         }
 
         public DbSet<SignalDataModel> Signals { get; set; }
+
+        public DbSet<TermsModel> Terms { get; set; }
     }
 }

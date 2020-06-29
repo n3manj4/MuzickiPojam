@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using SignalMonitoring.API.Models;
 using System.Threading.Tasks;
-using SignalMonitoring.API.Models;
 
 namespace SignalMonitoring.API.Services
 {

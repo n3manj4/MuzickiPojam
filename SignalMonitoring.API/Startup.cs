@@ -1,5 +1,3 @@
-using System;
-using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -9,9 +7,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
-using SignalMonitoring.API.Controllers;
 using SignalMonitoring.API.Hubs;
 using SignalMonitoring.API.Persistence;
+using System.Text;
 using SignalMonitoring.API.Services;
 
 namespace SignalMonitoring.API
@@ -30,10 +28,12 @@ namespace SignalMonitoring.API
         {
             services.AddControllers();
 
-            services.AddDbContext<MainDbContext>(contextOptions => {
+            services.AddDbContext<MainDbContext>(contextOptions =>
+            {
                 contextOptions.UseSqlServer(Configuration.GetValue<string>(key: "ConnectionString"));
             });
-            services.AddDbContext<UserDbContext>(contextOptions => {
+            services.AddDbContext<UserDbContext>(contextOptions =>
+            {
                 contextOptions.UseSqlServer(Configuration.GetValue<string>(key: "ConnectionString"));
             });
 
@@ -58,6 +58,9 @@ namespace SignalMonitoring.API
                     ValidateIssuerSigningKey = true
                 };
             });
+
+            services.AddTransient<ISignalService, SignalService>();
+            services.AddTransient<ITermService, TermService>();
 
             services.AddSignalR();
             services.AddCors(o => o.AddPolicy("CorsPolicy", builder =>
@@ -84,11 +87,11 @@ namespace SignalMonitoring.API
             app.UseAuthorization();
 
 
-             app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-                endpoints.MapHub<SignalHub>("/signalHub");
-            });
+            app.UseEndpoints(endpoints =>
+           {
+               endpoints.MapControllers();
+               endpoints.MapHub<SignalHub>("/signalHub");
+           });
         }
     }
 }
