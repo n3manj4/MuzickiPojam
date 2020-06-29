@@ -1,5 +1,4 @@
-<div class = "center">
-<mat-card>
+<mat-card id="overflow">
     <mat-card-content>
         <mat-expansion-panel *ngFor="let index of numbers; 
         let i = index" [expanded]="step === i" (opened)="setStep(i)" hideToggle>
@@ -23,4 +22,3 @@
         <button mat-button color="primary">Finish</button>
     </mat-card-actions>
 </mat-card>
-</div>
