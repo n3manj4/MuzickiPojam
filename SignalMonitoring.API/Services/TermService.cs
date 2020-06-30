@@ -1,26 +1,26 @@
-﻿using SignalMonitoring.API.Models;
-using SignalMonitoring.API.Persistence;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using SignalMonitoring.API.Persistence;
 
 namespace SignalMonitoring.API.Services
 {
     public class TermService : ITermService
     {
         private readonly MainDbContext m_mainDbContext;
+        private Random m_random = new Random();
 
         public TermService(MainDbContext mainDbContext)
         {
             m_mainDbContext = mainDbContext;
         }
 
-        public string  GetRandomTerm()
+        public string GetRandomTerm()
         {
-            var item = m_mainDbContext.Terms.Find(1);
-            return item.Terms;
+            var count = m_mainDbContext.Terms.Count();
+           
+            var item = m_mainDbContext.Terms.Find(m_random.Next(1, count));
+            return JsonConvert.SerializeObject(item.Terms);
         }
 
     }

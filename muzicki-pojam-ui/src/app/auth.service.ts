@@ -37,13 +37,8 @@ export class AuthService {
     this.router.navigate(["/home"])
   }
 
-
-
   home(){
-      console.log('home')
-      this.http.get<string>('http://localhost:63291/api/home').subscribe(result => {
-        console.log(result)
-      })
+      return this.http.get('http://localhost:63291/api/home')
     }
   }
 

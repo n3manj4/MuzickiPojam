@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-home',
@@ -8,12 +9,17 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   numbers = []
-  constructor() {
+  title
+  constructor(private auth: AuthService) {
     this.numbers = Array.from(Array(10),(x,i)=>i)
-    console.log(this.numbers)
-   }
+  }
+
+
 
   ngOnInit(): void {
+    this.auth.home().subscribe(res => {
+      this.title = res
+    })
   }
 
   step = 0;
