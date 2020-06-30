@@ -40,5 +40,9 @@ export class AuthService {
   home(){
       return this.http.get('http://localhost:63291/api/home')
     }
+
+    finish(answers) {
+      return this.http.post('http://localhost:63291/api/home/finish', answers).subscribe()
+    }
   }
 

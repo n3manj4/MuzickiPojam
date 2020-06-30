@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
-
+const ANSWERS = [
+  {id: 1, answer:''},
+  {id: 2, answer:''},
+  {id: 3, answer:''},
+  {id: 4, answer:''},
+  {id: 5, answer:''}
+];
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -8,13 +14,11 @@ import { AuthService } from '../auth.service';
 })
 export class HomeComponent implements OnInit {
 
-  numbers = []
-  title
+  answers = ANSWERS
+  title 
+
   constructor(private auth: AuthService) {
-    this.numbers = Array.from(Array(10),(x,i)=>i)
   }
-
-
 
   ngOnInit(): void {
     this.auth.home().subscribe(res => {
@@ -28,13 +32,16 @@ export class HomeComponent implements OnInit {
         this.step = index;
     }
 
-    nextStep() {
+    nextStep(value) {
+        this.answers[this.step].answer = value;
         this.step++;
-        console.log(this.step)
     }
 
     prevStep() {
         this.step--;
     }
 
+    finish() {
+      this.auth.finish(this.answers)
+    }
 }

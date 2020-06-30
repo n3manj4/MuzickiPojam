@@ -2,7 +2,7 @@
 <br><br>
 <mat-card id="overflow">
     <mat-card-content>
-        <mat-expansion-panel *ngFor="let index of numbers; 
+        <mat-expansion-panel *ngFor="let answer of answers; 
         let i = index" [expanded]="step === i" (opened)="setStep(i)" hideToggle>
             <mat-expansion-panel-header>
               <mat-panel-title>
@@ -10,17 +10,17 @@
               </mat-panel-title>
             </mat-expansion-panel-header>
         
-            <mat-form-field>
-              <mat-label>First name</mat-label>
-              <input matInput (keyup.enter)="nextStep()" appFocus> 
+            <mat-form-field class="fullWidth">
+              <mat-label>Naziv pesme</mat-label>
+              <input #box matInput (keyup.enter)="nextStep(box.value)"> 
             </mat-form-field>
         
             <mat-action-row>
-              <button mat-button color="primary" (click)="nextStep()">Next</button>
+              <button mat-button color="primary" (click)="nextStep(box.value)">Next</button>
             </mat-action-row>
           </mat-expansion-panel>
     </mat-card-content>
     <mat-card-actions>
-        <button mat-button color="primary">Finish</button>
+        <button mat-button color="primary" (click)="finish()">Finish</button>
     </mat-card-actions>
 </mat-card>

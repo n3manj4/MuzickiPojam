@@ -12,3 +12,7 @@
     text-align: center; 
     font-size: 300%;
 }
+
+.fullWidth {
+    width: 100%
+}

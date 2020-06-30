@@ -20,7 +20,7 @@ namespace SignalMonitoring.API.Services
             var count = m_mainDbContext.Terms.Count();
            
             var item = m_mainDbContext.Terms.Find(m_random.Next(1, count));
-            return JsonConvert.SerializeObject(item.Terms);
+            return JsonConvert.SerializeObject(item.Term);
         }
 
     }

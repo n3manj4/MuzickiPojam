@@ -3,12 +3,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SignalMonitoring.API.Persistence
 {
-    public class TermsModel
+    public class AnswerModel
     {
-        [Key]
-        public int TermId { get; set; }
+        public int Id { get; set; }
 
-        public string Term { get; set; }
+        public string Answer { get; set; }
 
     }
 }

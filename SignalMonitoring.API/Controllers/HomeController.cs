@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using SignalMonitoring.API.Persistence;
 using SignalMonitoring.API.Services;
 
 namespace SignalMonitoring.API.Controllers
@@ -21,6 +23,12 @@ namespace SignalMonitoring.API.Controllers
         public async Task<IActionResult> GetTerms()
         {
             return Ok(m_termService.GetRandomTerm());
+        }
+
+        [HttpPost("finish")]
+        public void Finish(List<AnswerModel> answers)
+        {
+            
         }
     }
 }
