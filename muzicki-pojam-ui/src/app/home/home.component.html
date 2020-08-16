@@ -2,27 +2,41 @@
 <br><br>
 <mat-card id="overflow">
     <mat-card-content>
-      <mat-form-field appearance="standard">
+      <mat-form-field appearance="standard" class="form-field">
         <mat-label>Ime pevača</mat-label>
-        <input matInput>
+        <input matInput [(ngModel)]="answer.singer" (keyup)="answer.lyric=''">
+        <button mat-button *ngIf="answer.singer" matSuffix mat-icon-button aria-label="Clear" (click)="answer.singer=''">
+          <mat-icon>close</mat-icon>
+        </button>
       </mat-form-field>
 
-      <mat-form-field appearance="standard" style="float: right;">
+      <mat-form-field appearance="standard" class="form-field" style="float: right;">
         <mat-label>Naziv pesme</mat-label>
-        <input matInput>
+        <input matInput [(ngModel)]="answer.title" (keyup)="answer.lyric=''">
+        <button mat-button *ngIf="answer.title" matSuffix mat-icon-button aria-label="Clear" (click)="answer.title=''">
+          <mat-icon>close</mat-icon>
+        </button>
       </mat-form-field>
       <br>
       <br>
       <div class="separator">ili</div>
-
       <mat-form-field appearance="standard" class="fullWidth">
         <mat-label>Deo pesme (minimum 5 reči)</mat-label>
-        <input matInput>
+        <input matInput [(ngModel)]="answer.lyric" (keyup)="clearInput()">
+        <button mat-button *ngIf="answer.lyric" matSuffix mat-icon-button aria-label="Clear" (click)="answer.lyric=''">
+          <mat-icon>close</mat-icon>
+        </button>
       </mat-form-field>
     </mat-card-content>
     <mat-card-actions align="end"> 
-        <button mat-button color="primary" (click)="finish()">Finish</button>
+        <button mat-button color="primary" (click)="next()">Sledeći odgovor</button>
     </mat-card-actions>
-    
-
+    <div style="overflow: auto; height: 300px;">
+      <mat-list role="list" *ngFor="let answer of answers">
+        <mat-list-item role="listitem">{{answer.singer}} - {{answer.title}} {{answer.lyric}}</mat-list-item>
+      </mat-list>
+    </div>
+    <mat-card-actions align="end"> 
+      <button mat-flat-button color="primary" (click)="next()">Završi</button>
+    </mat-card-actions>
 </mat-card>

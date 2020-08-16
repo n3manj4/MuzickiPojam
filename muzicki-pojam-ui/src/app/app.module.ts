@@ -19,7 +19,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component'
 import { MatExpansionModule } from '@angular/material/expansion';
 import {MatDividerModule} from '@angular/material/divider';
-
+import {MatListModule} from '@angular/material/list';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +41,8 @@ import {MatDividerModule} from '@angular/material/divider';
     FormsModule,
     ReactiveFormsModule,
     MatExpansionModule,
-    MatDividerModule
+    MatDividerModule,
+    MatListModule
   ],
   providers: [AuthService, {
     provide: HTTP_INTERCEPTORS,

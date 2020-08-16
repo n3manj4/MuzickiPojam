@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { AnswerViewModel } from "../models/signal-models/answer-view-model";
 
 @Component({
   selector: 'app-home',
@@ -8,10 +9,13 @@ import { AuthService } from '../auth.service';
 })
 export class HomeComponent implements OnInit {
 
+  answer
   answers
   title 
 
   constructor(private auth: AuthService) {
+    this.answer = new AnswerViewModel
+    this.answers = []
   }
 
   ngOnInit(): void {
@@ -20,22 +24,20 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  step = 0;
-
-    setStep(index: number) {
-        this.step = index;
+    clearInput()
+    {
+      this.answer.title = ''
+      this.answer.singer = ''
+    }
+    
+    next() {
+      console.log(this.answer)
+      this.answers.push(this.answer)
+      this.answer = new AnswerViewModel
     }
 
-    nextStep(value) {
-        this.answers[this.step].answer = value;
-        this.step++;
-    }
-
-    prevStep() {
-        this.step--;
-    }
-
-    finish() {
-      this.auth.finish(this.answers)
+    finish()
+    {
+      //this.auth.finish(this.answers)
     }
 }
