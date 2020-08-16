@@ -1,12 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
-const ANSWERS = [
-  {id: 1, answer:''},
-  {id: 2, answer:''},
-  {id: 3, answer:''},
-  {id: 4, answer:''},
-  {id: 5, answer:''}
-];
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -14,7 +8,7 @@ const ANSWERS = [
 })
 export class HomeComponent implements OnInit {
 
-  answers = ANSWERS
+  answers
   title 
 
   constructor(private auth: AuthService) {

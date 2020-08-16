@@ -1,10 +1,10 @@
 #overflow
 {
     overflow-y: auto;
-    height: 300px;
+    height: auto;
     padding: 1rem;
-    width: 300%;
-    transform:translateX(-25%);
+    width: 100%;
+    /* transform:translateX(-25%); */
 }
 
 #title {
@@ -15,4 +15,25 @@
 
 .fullWidth {
     width: 100%
+}
+.center {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+.separator::before, .separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid gainsboro;
+}
+.separator::before {
+    margin-right: .25em;
+}
+.separator::after {
+    margin-left: .25em;
 }
