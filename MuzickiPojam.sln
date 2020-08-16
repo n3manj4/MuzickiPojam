@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalMonitoring.API", "SignalMonitoring.API\SignalMonitoring.API.csproj", "{7DCA27C7-02D5-4193-AD2C-BEAADDB1D763}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SignalMonitoring.API", "SignalMonitoring.API\SignalMonitoring.API.csproj", "{7DCA27C7-02D5-4193-AD2C-BEAADDB1D763}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolrEngine", "SolrEngine\SolrEngine.csproj", "{8A43EAFA-7CB4-4C8C-9EB6-99E16643781F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{7DCA27C7-02D5-4193-AD2C-BEAADDB1D763}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7DCA27C7-02D5-4193-AD2C-BEAADDB1D763}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7DCA27C7-02D5-4193-AD2C-BEAADDB1D763}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A43EAFA-7CB4-4C8C-9EB6-99E16643781F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A43EAFA-7CB4-4C8C-9EB6-99E16643781F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A43EAFA-7CB4-4C8C-9EB6-99E16643781F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A43EAFA-7CB4-4C8C-9EB6-99E16643781F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
