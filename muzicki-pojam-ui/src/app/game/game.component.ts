@@ -15,12 +15,15 @@ export class GameComponent implements OnInit {
   game
   title 
   submited 
+  words
+  minWordNumber
 
   constructor(private gameService: GameService, private router: Router) {     
     this.answer = new AnswerViewModel
     this.game = new GameViewModel
     this.game.answers = []
-    this.title = ''
+    this.words
+    this.minWordNumber = false
   }
 
   ngOnInit(): void {
@@ -28,15 +31,18 @@ export class GameComponent implements OnInit {
       this.game = res
       console.log(this.game)
       this.title = this.game.term
-      //this.router.navigate(['/game', this.game.id]);
     })
   }
   
-
   clearInput()
     {
       this.answer.title = ''
       this.answer.singer = ''
+      var words = this.answer.lyric.match(/\b[-?(\w+)?]+\b/gi);
+      if (words != null)
+        this.minWordNumber = words.length > 3 
+      else
+        this.minWordNumber = false
     }
     
     next() {
@@ -54,13 +60,8 @@ export class GameComponent implements OnInit {
       })
     }
 
-    getColor(answer){
-      if (answer.isCorrectAnswer)
-      {
-        return "green"
-      }
-      else{
-        return "red"
-      }
+    clearLyric() {
+      this.answer.lyric = ''
+      this.minWordNumber = false
     }
 }
