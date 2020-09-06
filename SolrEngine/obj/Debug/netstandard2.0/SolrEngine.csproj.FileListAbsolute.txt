@@ -1,0 +1,9 @@
+C:\Users\NMiladin\OneDrive - Quest\Documents\Diplomski\MuzickiPojam\MuzickiPojam\SolrEngine\bin\Debug\netstandard2.0\SolrEngine.deps.json
+C:\Users\NMiladin\OneDrive - Quest\Documents\Diplomski\MuzickiPojam\MuzickiPojam\SolrEngine\bin\Debug\netstandard2.0\SolrEngine.dll
+C:\Users\NMiladin\OneDrive - Quest\Documents\Diplomski\MuzickiPojam\MuzickiPojam\SolrEngine\obj\Debug\netstandard2.0\SolrEngine.csprojAssemblyReference.cache
+C:\Users\NMiladin\OneDrive - Quest\Documents\Diplomski\MuzickiPojam\MuzickiPojam\SolrEngine\obj\Debug\netstandard2.0\SolrEngine.AssemblyInfoInputs.cache
+C:\Users\NMiladin\OneDrive - Quest\Documents\Diplomski\MuzickiPojam\MuzickiPojam\SolrEngine\obj\Debug\netstandard2.0\SolrEngine.AssemblyInfo.cs
+C:\Users\NMiladin\OneDrive - Quest\Documents\Diplomski\MuzickiPojam\MuzickiPojam\SolrEngine\bin\Debug\netstandard2.0\SolrEngine.pdb
+C:\Users\NMiladin\OneDrive - Quest\Documents\Diplomski\MuzickiPojam\MuzickiPojam\SolrEngine\obj\Debug\netstandard2.0\SolrEngine.csproj.CoreCompileInputs.cache
+C:\Users\NMiladin\OneDrive - Quest\Documents\Diplomski\MuzickiPojam\MuzickiPojam\SolrEngine\obj\Debug\netstandard2.0\SolrEngine.dll
+C:\Users\NMiladin\OneDrive - Quest\Documents\Diplomski\MuzickiPojam\MuzickiPojam\SolrEngine\obj\Debug\netstandard2.0\SolrEngine.pdb

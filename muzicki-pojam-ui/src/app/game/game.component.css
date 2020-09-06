@@ -1,0 +1,42 @@
+#overflow
+{
+    overflow-y: auto;
+    height: auto;
+    padding: 1rem;
+    width: 100%;
+}
+
+#title {
+    color: black; 
+    text-align: center; 
+    font-size: 300%;
+}
+
+.fullWidth {
+    width: 100%
+}
+.center {
+    justify-content: center;
+    align-items: center;
+  }
+
+.form-field {
+    width: 200px;
+}
+
+.separator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+.separator::before, .separator::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid gainsboro;
+}
+.separator::before {
+    margin-right: .25em;
+}
+.separator::after {
+    margin-left: .25em;
+}

@@ -13,19 +13,26 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AuthService} from './auth.service'
+import { AuthService} from './services/auth.service'
+import { GameService} from './services/game.service'
+
 import { AuthInterceptor } from "./auth.interceptor";
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component'
+import { GameComponent } from './game/game.component'
+
 import { MatExpansionModule } from '@angular/material/expansion';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatListModule} from '@angular/material/list';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     HomeComponent,
-    LoginComponent
+    LoginComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,
@@ -44,11 +51,13 @@ import {MatListModule} from '@angular/material/list';
     MatDividerModule,
     MatListModule
   ],
-  providers: [AuthService, {
+  providers: [
+    GameService,
+    AuthService, {
     provide: HTTP_INTERCEPTORS,
     useClass : AuthInterceptor,
     multi : true 
   }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent], 
 })
 export class AppModule { }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { SignalRService } from "../app/services/signal-r.service";
 import { SignalViewModel } from "../app/models/signal-models/signal-view-model";
-import { AuthService} from './auth.service'
+import { AuthService} from './services/auth.service'
 
 @Component({
   selector: "app-root",

@@ -13,6 +13,7 @@ namespace SignalMonitoring.API.Services
         public TermService(MainDbContext mainDbContext)
         {
             m_mainDbContext = mainDbContext;
+            Term = GetRandomTerm();
         }
 
         public string GetRandomTerm()
@@ -20,8 +21,9 @@ namespace SignalMonitoring.API.Services
             var count = m_mainDbContext.Terms.Count();
            
             var item = m_mainDbContext.Terms.Find(m_random.Next(1, count));
-            return JsonConvert.SerializeObject(item.Term);
+            return "violina"; //item.Term;
         }
 
+        public string Term { get; set; }
     }
 }

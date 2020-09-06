@@ -1,5 +1,8 @@
+using CommonServiceLocator;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using SolrEngine;
+using SolrNet;
 
 namespace SignalMonitoring.API
 {
@@ -7,6 +10,7 @@ namespace SignalMonitoring.API
     {
         public static void Main(string[] args)
         {
+            SolrNet.Startup.Init<AnswerModel>("http://localhost:8983/solr/test");
             CreateHostBuilder(args).Build().Run();
         }
 

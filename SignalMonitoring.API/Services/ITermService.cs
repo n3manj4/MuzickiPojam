@@ -7,6 +7,6 @@ namespace SignalMonitoring.API.Services
 {
     public interface ITermService
     {
-        string GetRandomTerm();
+        string Term { get; set; }
     }
 }
