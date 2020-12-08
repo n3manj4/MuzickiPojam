@@ -1,7 +1,7 @@
 <div id="wrapper">
   <mat-toolbar color="primary">
     <mat-toolbar-row>
-        <span>Second Line</span>
+        <span>Welcome {{auth.username}}</span>
         <span class="example-spacer"></span>
         <button *ngIf="!auth.isAuthenticated" routerLink="/login" mat-icon-button color="white" aria-label="Example icon button with a home icon">
           <mat-icon>login</mat-icon>

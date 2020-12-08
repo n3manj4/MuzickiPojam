@@ -11,7 +11,7 @@ export class SignalRService {
 
   constructor() {
     this.buildConnection();
-    //this.startConnection();
+    this.startConnection();
   }
 
   private buildConnection = () => {

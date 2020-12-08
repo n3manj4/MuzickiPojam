@@ -24,6 +24,7 @@ import { GameComponent } from './game/game.component'
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
+import { GameLoginComponent } from './game-login/game-login.component';
 
 
 @NgModule({
@@ -32,7 +33,7 @@ import { MatListModule } from '@angular/material/list';
     RegisterComponent,
     HomeComponent,
     LoginComponent,
-    GameComponent
+    GameComponent,
   ],
   imports: [
     BrowserModule,
