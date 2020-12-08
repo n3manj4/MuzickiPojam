@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AnswerViewModel } from "../models/answer-view-model";
 import { GameViewModel } from "../models/game-view-model";
 import { GameService} from "../services/game.service"
-import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-game',
@@ -18,7 +17,7 @@ export class GameComponent implements OnInit {
   words
   minWordNumber
 
-  constructor(private gameService: GameService, private router: Router) {     
+  constructor(private gameService: GameService) {     
     this.answer = new AnswerViewModel
     this.game = new GameViewModel
     this.game.answers = []

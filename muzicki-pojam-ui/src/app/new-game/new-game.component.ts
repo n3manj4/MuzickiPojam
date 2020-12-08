@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SignalRService } from '../services/signal-r.service';
 
 @Component({
   selector: 'app-new-game',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewGameComponent implements OnInit {
 
-  constructor() { }
+  name: any
+
+  constructor(private signalService: SignalRService) { }
 
   ngOnInit(): void {
+  }
+
+  createGame(){
+    this.signalService.newGame(this.name)
   }
 
 }

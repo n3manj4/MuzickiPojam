@@ -42,4 +42,9 @@ export class SignalRService {
       this.signalReceived.emit(data);
     });
   }
+
+  public newGame(name: any) {
+      this.hubConnection.send("AddToGroup", name).then(() => console.log(name));
+    
+  }
 }

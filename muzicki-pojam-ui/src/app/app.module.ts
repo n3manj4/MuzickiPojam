@@ -24,10 +24,9 @@ import { GameComponent } from './game/game.component'
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
-import { GameLoginComponent } from './game-login/game-login.component';
 import { NewGameComponent } from './new-game/new-game.component';
 import { JoinGameComponent } from './join-game/join-game.component';
-
+import {MatSliderModule} from '@angular/material/slider';
 
 @NgModule({
   declarations: [
@@ -54,7 +53,8 @@ import { JoinGameComponent } from './join-game/join-game.component';
     ReactiveFormsModule,
     MatExpansionModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
+    MatSliderModule
   ],
   providers: [
     GameService,

@@ -1,1 +1,15 @@
-<p>new-game works!</p>
+<mat-slider
+  thumbLabel
+  tickInterval="1000"
+  min="2"
+  max="10"
+  step=2>
+</mat-slider>
+<mat-slider
+  thumbLabel
+  tickInterval="1000"
+  min="60"
+  max="180"
+  step=10></mat-slider>
+  <input matInput type="text" [(ngModel)]="name">
+<button class="mat-raised-button" color="primary" (click)="createGame()">Create game</button>
