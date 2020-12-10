@@ -27,6 +27,7 @@ import { MatListModule } from '@angular/material/list';
 import { NewGameComponent } from './new-game/new-game.component';
 import { JoinGameComponent } from './join-game/join-game.component';
 import {MatSliderModule} from '@angular/material/slider';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import {MatSliderModule} from '@angular/material/slider';
     MatExpansionModule,
     MatDividerModule,
     MatListModule,
-    MatSliderModule
+    MatSliderModule,
+    MatTableModule
   ],
   providers: [
     GameService,

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GroupViewModel } from '../models/signal-models/signal-view-model';
 import { SignalRService } from '../services/signal-r.service';
 
 @Component({
@@ -8,15 +9,18 @@ import { SignalRService } from '../services/signal-r.service';
 })
 export class NewGameComponent implements OnInit {
 
-  name: any
+  group: GroupViewModel
 
-  constructor(private signalService: SignalRService) { }
+  constructor(private signalService: SignalRService) {
+    this.group = new GroupViewModel
+   }
 
   ngOnInit(): void {
   }
 
   createGame(){
-    this.signalService.newGame(this.name)
+    console.log("slider" + this.group)
+    this.signalService.addToGroup(this.group)
   }
 
 }

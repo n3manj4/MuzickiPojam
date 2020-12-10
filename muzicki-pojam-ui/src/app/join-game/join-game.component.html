@@ -1,1 +1,38 @@
-<p>join-game works!</p>
+<div class="example-container mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+  
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="duration">
+        <th mat-header-cell *matHeaderCellDef> Duration </th>
+        <td mat-cell *matCellDef="let element"> {{element.duration}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="noOfPlayers">
+        <th mat-header-cell *matHeaderCellDef> No. of players </th>
+        <td mat-cell *matCellDef="let element"> {{element.noOfPlayers}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="maxPlayers">
+        <th mat-header-cell *matHeaderCellDef> Max players </th>
+        <td mat-cell *matCellDef="let element"> {{element.maxPlayers}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="join">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <!--<td mat-cell *matCellDef="let element"> {{element.maxPlayers}} </td>-->
+        <td mat-cell *matCellDef="let element"><button (click)="onClick(element)">Join</button></td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>

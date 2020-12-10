@@ -13,6 +13,7 @@ namespace SignalMonitoring.API.Services
         {
             m_mainDbContext = mainDbContext;
         }
+
         public async Task<bool> SaveSignalAsync(SignalInputModel inputModel)
         {
             try

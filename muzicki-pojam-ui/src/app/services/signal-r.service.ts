@@ -1,6 +1,6 @@
 import { Injectable, EventEmitter } from "@angular/core";
 import * as signalR from "@aspnet/signalr";
-import { SignalViewModel } from "../models/signal-models/signal-view-model";
+import { GroupViewModel, SignalViewModel } from "../models/signal-models/signal-view-model";
 
 @Injectable({
   providedIn: "root"
@@ -8,6 +8,8 @@ import { SignalViewModel } from "../models/signal-models/signal-view-model";
 export class SignalRService {
   private hubConnection: signalR.HubConnection;
   signalReceived = new EventEmitter<SignalViewModel>();
+  groupReceived = new EventEmitter<GroupViewModel[]>();
+
 
   constructor() {
     this.buildConnection();
@@ -41,10 +43,12 @@ export class SignalRService {
     this.hubConnection.on("SignalMessageReceived", (data: SignalViewModel) => {
       this.signalReceived.emit(data);
     });
+    this.hubConnection.on("GroupReceived", (data: GroupViewModel[]) => {
+      this.groupReceived.emit(data);
+    });
   }
 
-  public newGame(name: any) {
-      this.hubConnection.send("AddToGroup", name).then(() => console.log(name));
-    
+  public addToGroup(name: any) {
+      this.hubConnection.send("joinGroup", name).then(() => console.log(name));
   }
 }
