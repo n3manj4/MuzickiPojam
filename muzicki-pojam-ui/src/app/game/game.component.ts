@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AnswerViewModel } from "../models/answer-view-model";
 import { GameViewModel } from "../models/game-view-model";
 import { GameService} from "../services/game.service"
+import { SignalRService } from '../services/signal-r.service';
 
 @Component({
   selector: 'app-game',
@@ -16,13 +17,20 @@ export class GameComponent implements OnInit {
   submited 
   words
   minWordNumber
+  startGame
 
-  constructor(private gameService: GameService) {     
+  constructor(private gameService: GameService, private signalService: SignalRService) {     
     this.answer = new AnswerViewModel
     this.game = new GameViewModel
     this.game.answers = []
     this.words
     this.minWordNumber = false
+    this.startGame = false
+
+    signalService.startGame.subscribe(() => {
+      console.log("pocni igru")
+      this.startGame = true
+    })
   }
 
   ngOnInit(): void {

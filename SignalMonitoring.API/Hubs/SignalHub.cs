@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR;
 
 namespace SignalMonitoring.API.Hubs
@@ -20,6 +21,13 @@ namespace SignalMonitoring.API.Hubs
             {
                 GamesManager.Instance.Groups
             });
+
+            var g = GamesManager.Instance.Groups.FirstOrDefault(x => x.Name == group.Name);
+
+            if (g != null && g.MaxPlayers == g.NoOfPlayers)
+            {
+                await Clients.Group(group.Name).SendCoreAsync("StartGame", new object[] {});
+            }
 
         }
     }

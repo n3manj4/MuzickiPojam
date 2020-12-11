@@ -21,4 +21,8 @@ export class GameService {
   start(){
     return this.http.get('http://localhost:63291/api/game')
   }
+
+  getGroups(){
+    return this.http.get('http://localhost:63291/api/game/groups')
+  }
 }

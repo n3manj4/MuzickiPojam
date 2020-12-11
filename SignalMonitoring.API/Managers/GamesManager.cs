@@ -1,7 +1,6 @@
-﻿using System;
+﻿using SignalMonitoring.API.Hubs;
 using System.Collections.Generic;
 using System.Linq;
-using SignalMonitoring.API.Hubs;
 
 namespace SignalMonitoring.API
 {
@@ -13,7 +12,7 @@ namespace SignalMonitoring.API
 
         private GamesManager()
         {
-            SignalHub.ClientJoinedToGroup +=SignalHubOnClientJoinedToGroup;
+            SignalHub.ClientJoinedToGroup += SignalHubOnClientJoinedToGroup;
         }
 
         private void SignalHubOnClientJoinedToGroup(GroupModel groupModel)
@@ -49,16 +48,8 @@ namespace SignalMonitoring.API
             }
         }
 
-        public List<Game> Games
-        {
-            get;
-            set;
-        } = new List<Game>();
+        public List<Game> Games { get; set; } = new List<Game>();
 
-        public List<GroupModel> Groups
-        {
-            get;
-            set;
-        } = new List<GroupModel>();
+        public List<GroupModel> Groups { get; set; } = new List<GroupModel>();
     }
 }

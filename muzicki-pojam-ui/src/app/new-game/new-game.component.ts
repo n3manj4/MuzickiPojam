@@ -13,6 +13,9 @@ export class NewGameComponent implements OnInit {
 
   constructor(private signalService: SignalRService) {
     this.group = new GroupViewModel
+    this.group.duration = 60
+    this.group.maxPlayers = 2
+    this.group.name = ""
    }
 
   ngOnInit(): void {

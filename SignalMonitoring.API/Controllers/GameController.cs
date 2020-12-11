@@ -19,6 +19,12 @@ namespace SignalMonitoring.API.Controllers
         {
             m_termService = termService;
         }
+
+        [HttpGet, Route("groups")]
+        public List<GroupModel> GetGroups()
+        {
+            return GamesManager.Instance.Groups;
+        }
         // GET: api/Game
         [HttpGet]
         public Game Get()

@@ -28,6 +28,9 @@ import { NewGameComponent } from './new-game/new-game.component';
 import { JoinGameComponent } from './join-game/join-game.component';
 import {MatSliderModule} from '@angular/material/slider';
 import {MatTableModule} from '@angular/material/table';
+import {MatTooltipModule} from '@angular/material/tooltip';
+import {MatRadioModule} from '@angular/material/radio';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -56,7 +59,10 @@ import {MatTableModule} from '@angular/material/table';
     MatDividerModule,
     MatListModule,
     MatSliderModule,
-    MatTableModule
+    MatTableModule,
+    MatTooltipModule,
+    MatRadioModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     GameService,

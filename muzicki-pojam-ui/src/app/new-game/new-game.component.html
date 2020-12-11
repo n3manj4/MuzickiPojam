@@ -13,5 +13,12 @@
   max="180"
   step=10
   [(ngModel)]="group.duration"> Game duration</mat-slider>
-  <input matInput type="text" [(ngModel)]="group.name">
-<button class="mat-raised-button" color="primary" (click)="createGame()">Create game</button>
+  <mat-radio-group aria-label="Select an option">
+    <mat-radio-button value="red" checked>Red team</mat-radio-button>
+    <mat-radio-button value="blue">Blue team</mat-radio-button>
+  </mat-radio-group>
+  <mat-form-field appearance="fill">
+    <mat-label>Room name</mat-label>
+    <input matInput [(ngModel)]="group.name">
+</mat-form-field>
+<button [routerLink]="'/game'" class="mat-raised-button" color="primary" (click)="createGame()">Create game</button>
