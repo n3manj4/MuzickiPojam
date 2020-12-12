@@ -26,7 +26,7 @@ namespace SignalMonitoring.API.Hubs
 
             if (g != null && g.MaxPlayers == g.NoOfPlayers)
             {
-                await Clients.Group(group.Name).SendCoreAsync("StartGame", new object[] {});
+                await Clients.Group(group.Name).SendCoreAsync("StartGame", new object[] { g.Duration });
             }
 
         }

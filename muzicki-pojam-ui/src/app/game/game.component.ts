@@ -3,6 +3,8 @@ import { AnswerViewModel } from "../models/answer-view-model";
 import { GameViewModel } from "../models/game-view-model";
 import { GameService} from "../services/game.service"
 import { SignalRService } from '../services/signal-r.service';
+import { interval } from 'rxjs';
+import { GroupViewModel } from '../models/signal-models/signal-view-model';
 
 @Component({
   selector: 'app-game',
@@ -18,18 +20,19 @@ export class GameComponent implements OnInit {
   words
   minWordNumber
   startGame
+  timer
 
   constructor(private gameService: GameService, private signalService: SignalRService) {     
     this.answer = new AnswerViewModel
     this.game = new GameViewModel
     this.game.answers = []
-    this.words
     this.minWordNumber = false
     this.startGame = false
+    this.timer = 0
 
-    signalService.startGame.subscribe(() => {
-      console.log("pocni igru")
+    signalService.startGame.subscribe((res) => {
       this.startGame = true
+      this.timer = res
     })
   }
 
@@ -39,6 +42,16 @@ export class GameComponent implements OnInit {
       console.log(this.game)
       this.title = this.game.term
     })
+
+
+    // Create an Observable that will publish a value on an interval
+    const secondsCounter = interval(1000);
+    // Subscribe to begin publishing values
+    const subscription = secondsCounter.subscribe(n => {
+      this.timer -= 10
+      if (this.timer == 0)
+        subscription.unsubscribe();
+    });
   }
   
   clearInput()

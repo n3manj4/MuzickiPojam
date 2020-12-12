@@ -47,8 +47,8 @@ export class SignalRService {
         console.log(data)
         this.groupReceived.emit(data);
     });
-    this.hubConnection.on("StartGame", () => {
-      this.startGame.emit()
+    this.hubConnection.on("StartGame", (data) => {
+      this.startGame.emit(data)
     });
   }
 
