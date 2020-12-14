@@ -14,8 +14,8 @@
   step=10
   [(ngModel)]="group.duration"> Game duration</mat-slider>
   <mat-radio-group aria-label="Select an option">
-    <mat-radio-button value="red" checked>Red team</mat-radio-button>
-    <mat-radio-button value="blue">Blue team</mat-radio-button>
+    <mat-radio-button (change)="this.radioChanged(0)" value="red" checked>Red team</mat-radio-button>
+    <mat-radio-button (change)="this.radioChanged(1)" value="blue">Blue team</mat-radio-button>
   </mat-radio-group>
   <mat-form-field appearance="fill">
     <mat-label>Room name</mat-label>

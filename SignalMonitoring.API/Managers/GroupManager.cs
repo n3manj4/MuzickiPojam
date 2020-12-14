@@ -10,7 +10,7 @@ namespace SignalMonitoring.API.Managers
     {
         public GroupManager()
         {
-            SignalHub.ClientJoinedToGroup += SignalHub_ClientJoinedToGroup;
+            //SignalHub.ClientJoinedToGroup += SignalHub_ClientJoinedToGroup;
         }
 
         private void SignalHub_ClientJoinedToGroup(GroupModel group)

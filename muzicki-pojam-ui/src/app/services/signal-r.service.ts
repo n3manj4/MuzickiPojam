@@ -52,8 +52,8 @@ export class SignalRService {
     });
   }
 
-  public addToGroup(name: any) {
-    console.log("Add to group " + name)
-      this.hubConnection.send("joinGroup", name)
+  public addToGroup(group: any) {
+    console.log(group)
+      this.hubConnection.send("joinGroup", group)
   }
 }

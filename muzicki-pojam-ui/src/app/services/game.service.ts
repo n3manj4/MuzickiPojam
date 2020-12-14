@@ -23,6 +23,6 @@ export class GameService {
   }
 
   getGroups(){
-    return this.http.get('http://localhost:63291/api/game/groups')
+    return this.http.get('http://localhost:63291/api/game/rooms')
   }
 }

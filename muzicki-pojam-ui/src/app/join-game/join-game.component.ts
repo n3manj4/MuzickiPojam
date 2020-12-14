@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SignalRService } from '../services/signal-r.service';
 import { GameService} from "../services/game.service"
 import { GroupViewModel } from '../models/signal-models/signal-view-model';
+import { TeamEnum } from '../models/app-enums';
 
 @Component({
   selector: 'app-join-game',
@@ -9,6 +10,9 @@ import { GroupViewModel } from '../models/signal-models/signal-view-model';
   styleUrls: ['./join-game.component.css']
 })
 export class JoinGameComponent implements OnInit {
+
+  disableRed
+  disableBlue
 
   displayedColumns = ['position', 'name', 'duration', 'noOfPlayers', 'maxPlayers', 'join'];
   dataSource = [];
@@ -28,17 +32,22 @@ export class JoinGameComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  joinRedTeam(element: any){
-    this.groupToJoin.duration = element.duration
-    this.groupToJoin.maxPlayers = element.maxPlayers
-    this.groupToJoin.name = element.name
-    this.groupToJoin.noOfPlayers = element.noOfPlayers
-    this.groupToJoin.position = this.groupToJoin.position
-    this.signalService.addToGroup(this.groupToJoin)
+  joinRedTeam(element: GroupViewModel){
+    if (element.maxPlayers / 2 == element.noOfPlayers + 1)
+    {
+      this.disableRed = true
+    }
+    element.team = TeamEnum.Red
+    this.signalService.addToGroup(element)
   }
 
   joinBlueTeam(element: any){
-    console.log(element);
+    if (element.maxPlayers / 2 == element.noOfPlayers + 1)
+    {
+      this.disableBlue = true
+    }
+    element.team = TeamEnum.Blue
+    this.signalService.addToGroup(element)
   }
 }
 

@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
-using SignalMonitoring.API.Persistence;
+﻿using Microsoft.AspNetCore.Mvc;
 using SignalMonitoring.API.Services;
 using SolrEngine;
+using System.Threading.Tasks;
 
 namespace SignalMonitoring.API.Controllers
 {
@@ -31,7 +27,7 @@ namespace SignalMonitoring.API.Controllers
         [HttpPost]
         public void Finish(Game game)
         {
-            foreach (var answer in game.Answers)
+            foreach (var answer in game.RedTeam.Answers)
             {
                 Solr.ValidateAnswer(answer, game.Term);
             }

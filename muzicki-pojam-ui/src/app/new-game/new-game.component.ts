@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GroupViewModel } from '../models/signal-models/signal-view-model';
 import { SignalRService } from '../services/signal-r.service';
+import { TeamEnum } from '../models/app-enums';
 
 @Component({
   selector: 'app-new-game',
@@ -22,8 +23,12 @@ export class NewGameComponent implements OnInit {
   }
 
   createGame(){
-    console.log("slider" + this.group)
+    console.log(this.group)
     this.signalService.addToGroup(this.group)
+  }
+
+  radioChanged(team: TeamEnum){
+    this.group.team = team
   }
 
 }

@@ -12,4 +12,5 @@ export class SignalViewModel {
     duration: number;
     noOfPlayers: number;
     maxPlayers: number;
+    team: any;
   }

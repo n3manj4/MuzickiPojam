@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR;
 
@@ -8,26 +9,30 @@ namespace SignalMonitoring.API.Hubs
 
     public class SignalHub : Hub
     {
-        public static event ClientGroupEventHandler ClientJoinedToGroup;
-        public static event ClientGroupEventHandler ClientLeftGroup;
-
         public async Task JoinGroup(GroupModel group)
         {
             await Groups.AddToGroupAsync(Context.ConnectionId, group.Name);
 
-            ClientJoinedToGroup?.Invoke(group);
-
-            await Clients.All.SendCoreAsync("GroupReceived", new object[]
+            if (!GamesManager.Games.Contains(group.Id))
             {
-                GamesManager.Instance.Groups
-            });
-
-            var g = GamesManager.Instance.Groups.FirstOrDefault(x => x.Name == group.Name);
-
-            if (g != null && g.MaxPlayers == g.NoOfPlayers)
-            {
-                await Clients.Group(group.Name).SendCoreAsync("StartGame", new object[] { g.Duration });
+                GamesManager.Games.CreateNewGame(group);
+                await Clients.All.SendCoreAsync("GroupReceived", new object[]
+                {
+                    group
+                });
             }
+            else
+            {
+                GamesManager.Games.AddToRoom(group);
+
+                var g = GamesManager.Games[group.Id];
+
+                if (g != null && group.MaxPlayers == g.Room.NoOfPlayers)
+                {
+                    await Clients.Group(group.Name).SendCoreAsync("StartGame", new object[] { g.Room.Duration });
+                }
+            }
+
 
         }
     }

@@ -20,21 +20,16 @@ namespace SignalMonitoring.API.Controllers
             m_termService = termService;
         }
 
-        [HttpGet, Route("groups")]
-        public List<GroupModel> GetGroups()
+        [HttpGet, Route("rooms")]
+        public IEnumerable<GroupModel> GetRooms()
         {
-            return GamesManager.Instance.Groups;
+            return GamesManager.Games.AllRooms();
         }
         // GET: api/Game
         [HttpGet]
         public Game Get()
         {
-            var game = new Game()
-            {
-                Id = Guid.NewGuid(), Term = m_termService.Term
-            };
-            GamesManager.Instance.Games.Add(game);
-            return game;
+            return new Game();
         }
 
         // GET: api/Game/5
@@ -46,13 +41,23 @@ namespace SignalMonitoring.API.Controllers
 
         // POST: api/Game
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Game value)
+        public async Task<IActionResult> Post([FromBody] Game value, TeamEnum team)
         {
             await Task.Run(() =>
             {
-                foreach (var answer in value.Answers)
+                if (team is TeamEnum.Blue)
                 {
-                    answer.IsCorrectAnswer = Solr.ValidateAnswer(answer, value.Term);
+                    foreach (var answer in value.BlueTeam.Answers)
+                    {
+                        answer.IsCorrectAnswer = Solr.ValidateAnswer(answer, value.Term);
+                    }
+                }
+                else
+                {
+                    foreach (var answer in value.RedTeam.Answers)
+                    {
+                        answer.IsCorrectAnswer = Solr.ValidateAnswer(answer, value.Term);
+                    }
                 }
             });
 
@@ -61,8 +66,9 @@ namespace SignalMonitoring.API.Controllers
 
         // PUT: api/Game/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public void Put(Guid id, [FromBody] string value)
         {
+            GamesManager.Games[id].Term = value;
         }
 
         // DELETE: api/ApiWithActions/5

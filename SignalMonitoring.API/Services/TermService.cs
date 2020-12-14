@@ -1,7 +1,6 @@
-﻿using System;
+﻿using SignalMonitoring.API.Persistence;
+using System;
 using System.Linq;
-using Newtonsoft.Json;
-using SignalMonitoring.API.Persistence;
 
 namespace SignalMonitoring.API.Services
 {
@@ -18,9 +17,16 @@ namespace SignalMonitoring.API.Services
 
         public string GetRandomTerm()
         {
-            var count = m_mainDbContext.Terms.Count();
-           
-            var item = m_mainDbContext.Terms.Find(m_random.Next(1, count));
+            try
+            {
+                var count = m_mainDbContext.Terms.Count();
+                var item = m_mainDbContext.Terms.Find(m_random.Next(1, count));
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
             return "violina"; //item.Term;
         }
 

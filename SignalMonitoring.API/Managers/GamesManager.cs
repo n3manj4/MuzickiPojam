@@ -1,6 +1,9 @@
-﻿using SignalMonitoring.API.Hubs;
+﻿using System;
+using SignalMonitoring.API.Hubs;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using SignalMonitoring.API.Persistence;
 
 namespace SignalMonitoring.API
 {
@@ -9,35 +12,31 @@ namespace SignalMonitoring.API
         private static GamesManager s_instance;
         private static readonly object s_padlock = new object();
 
+        public Game this[Guid id]
+        {
+            get => m_games[id];
+            set => m_games[id] = value;
+        }
+
 
         private GamesManager()
         {
-            SignalHub.ClientJoinedToGroup += SignalHubOnClientJoinedToGroup;
         }
+        private Dictionary<Guid, Game> m_games = new Dictionary<Guid, Game>();
 
-        private void SignalHubOnClientJoinedToGroup(GroupModel groupModel)
+        public bool Contains(Guid id)
         {
-            var g = Groups.FirstOrDefault(x => x.Name == groupModel.Name);
-
-            if (g is null)
-            {
-                var group = new GroupModel
-                {
-                    Duration = groupModel.Duration,
-                    MaxPlayers = groupModel.MaxPlayers,
-                    Name = groupModel.Name,
-                    NoOfPlayers = 1,
-                    Position = Groups.Count + 1
-                };
-                Groups.Add(group);
-            }
-            else
-            {
-                g.NoOfPlayers++;
-            }
+            return m_games.ContainsKey(id);
         }
 
-        public static GamesManager Instance
+        public void AddToRoom(GroupModel groupModel)
+        {
+            var g = this[groupModel.Id];
+
+            this[g.Id].IncreaseTeamNumber(g.Room.Team);
+        }
+
+        public static GamesManager Games
         {
             get
             {
@@ -48,8 +47,18 @@ namespace SignalMonitoring.API
             }
         }
 
-        public List<Game> Games { get; set; } = new List<Game>();
+        public IEnumerable<GroupModel> AllRooms()
+        {
+            return m_games.Select(x => x.Value.Room);
+        }
 
-        public List<GroupModel> Groups { get; set; } = new List<GroupModel>();
+
+        public void CreateNewGame(GroupModel group)
+        {
+            using var context = new MainDbContext();
+            var term = context.Terms.Find(new Random().Next(1, context.Terms.Count()));
+
+            m_games.Add(group.Id, new Game(group, term.Term));
+        }
     }
 }
