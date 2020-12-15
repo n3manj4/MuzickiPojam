@@ -53,7 +53,7 @@ export class SignalRService {
   }
 
   public addToGroup(group: any) {
-      console.log(group)
-      this.hubConnection.send("joinGroup", group)
+      let username = localStorage.getItem("name")
+      this.hubConnection.send("joinGroup", group, username)
   }
 }

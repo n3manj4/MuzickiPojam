@@ -32,11 +32,11 @@ namespace SignalMonitoring.API.Managers
             set => m_games[id] = value;
         }
 
-        public void AddToRoom(GroupModel groupModel)
+        public void AddToRoom(GroupModel groupModel, Player player)
         {
             var g = this[groupModel.Id];
 
-            this[g.Id].IncreaseTeamNumber(groupModel.Team);
+            this[g.Id].IncreaseTeamNumber(groupModel.Team, player);
         }
 
         public IEnumerable<GroupModel> AllRooms()
@@ -49,12 +49,12 @@ namespace SignalMonitoring.API.Managers
             return m_games.ContainsKey(id);
         }
 
-        public void CreateNewGame(GroupModel group)
+        public void CreateNewGame(GroupModel group, Player player)
         {
             using var context = new MainDbContext();
             var term = context.Terms.Find(new Random().Next(1, context.Terms.Count()));
 
-            m_games.Add(group.Id, new Game(group, term.Term));
+            m_games.Add(group.Id, new Game(group, player, term.Term));
         }
     }
 }

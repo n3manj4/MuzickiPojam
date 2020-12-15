@@ -6,17 +6,20 @@ namespace SignalMonitoring.API.Hubs
 {
     public class SignalHub : Hub
     {
-        public async Task JoinGroup(GroupModel group)
+        public async Task JoinGroup(GroupModel group, string userName)
         {
             await Groups.AddToGroupAsync(Context.ConnectionId, group.Name);
 
+            var player = new Player(Context.ConnectionId, userName);
+
             if (!GamesManager.Games.Contains(group.Id))
             {
-                GamesManager.Games.CreateNewGame(group);
+
+                GamesManager.Games.CreateNewGame(group, player);
             }
             else
             {
-                GamesManager.Games.AddToRoom(group);
+                GamesManager.Games.AddToRoom(group, player);
 
                 var g = GamesManager.Games[group.Id];
 
