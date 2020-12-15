@@ -1,7 +1,6 @@
-﻿using SolrEngine;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
+using SolrEngine;
 
 namespace SignalMonitoring.API
 {
@@ -9,8 +8,8 @@ namespace SignalMonitoring.API
     {
         public Game()
         {
-            
         }
+
         public Game(GroupModel group, string term)
         {
             Id = group.Id;
@@ -22,37 +21,42 @@ namespace SignalMonitoring.API
 
             IncreaseTeamNumber(group.Team);
         }
-        public GroupModel Room { get; set; }
-        public Guid Id { get; set; }
-        public string Term { get; set; }
-        public Team RedTeam { get; set; }
+
         public Team BlueTeam { get; set; }
+        public Team RedTeam { get; set; }
+        public Guid Id { get; set; }
+        public GroupModel Room { get; set; }
+        public string Term { get; set; }
 
         public void IncreaseTeamNumber(TeamEnum team)
         {
             if (team is TeamEnum.Blue)
             {
                 BlueTeam.Players.Add(new Player());
+                Room.BluePlayersCount++;
             }
             else
             {
                 RedTeam.Players.Add(new Player());
+                Room.RedPlayersCount++;
             }
-
-            Room.NoOfPlayers++;
         }
     }
 
     public class GroupModel
     {
-        public Guid Id { get; set; } = Guid.NewGuid();
-        public string Name { get; set; }
-        public int Position { get; set; }
         public int Duration { get; set; }
-        public int NoOfPlayers { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
         public int MaxPlayers { get; set; }
+        public string Name { get; set; }
+        public int NoOfPlayers
+        {
+            get => RedPlayersCount + BluePlayersCount;
+        }
+        public int RedPlayersCount { get; set; }
+        public int BluePlayersCount { get; set; }
+        public int Position { get; set; }
         public TeamEnum Team { get; set; }
-
     }
 
     public enum TeamEnum
@@ -68,6 +72,11 @@ namespace SignalMonitoring.API
             MaxPlayers = maxPlayers / 2;
         }
 
+        public List<AnswerModel> Answers { get; set; } = new List<AnswerModel>();
+        public int MaxPlayers { get; }
+
+        public List<Player> Players { get; } = new List<Player>();
+
         public void AddPlayer(Player player)
         {
             if (MaxPlayers > Players.Count)
@@ -75,11 +84,6 @@ namespace SignalMonitoring.API
                 Players.Add(player);
             }
         }
-
-        public List<Player> Players { get; } = new List<Player>();
-        public int MaxPlayers { get; }
-        public List<AnswerModel> Answers { get; set; } = new List<AnswerModel>();
-
     }
 
     public class Player

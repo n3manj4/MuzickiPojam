@@ -8,7 +8,7 @@ import { GroupViewModel, SignalViewModel } from "../models/signal-models/signal-
 export class SignalRService {
   private hubConnection: signalR.HubConnection;
   signalReceived = new EventEmitter<SignalViewModel>();
-  groupReceived = new EventEmitter<GroupViewModel[]>();
+  groupReceived = new EventEmitter<GroupViewModel>();
   startGame = new EventEmitter();
 
   constructor() {
@@ -43,7 +43,7 @@ export class SignalRService {
     this.hubConnection.on("SignalMessageReceived", (data: SignalViewModel) => {
       this.signalReceived.emit(data);
     });
-      this.hubConnection.on("GroupReceived", (data: GroupViewModel[]) => {
+      this.hubConnection.on("GroupReceived", (data: GroupViewModel) => {
         console.log(data)
         this.groupReceived.emit(data);
     });
@@ -53,7 +53,7 @@ export class SignalRService {
   }
 
   public addToGroup(group: any) {
-    console.log(group)
+      console.log(group)
       this.hubConnection.send("joinGroup", group)
   }
 }

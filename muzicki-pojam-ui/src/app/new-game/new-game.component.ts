@@ -23,7 +23,6 @@ export class NewGameComponent implements OnInit {
   }
 
   createGame(){
-    console.log(this.group)
     this.signalService.addToGroup(this.group)
   }
 

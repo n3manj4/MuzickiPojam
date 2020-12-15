@@ -19,6 +19,7 @@ export class AuthService {
   register(credentials){
     this.http.post('http://localhost:63291/api/account', credentials,
     {responseType: 'text'}).subscribe(res =>{
+      localStorage.setItem("user", credentials.username)
       this.authenticate(res)
     })
   }
@@ -26,12 +27,15 @@ export class AuthService {
   login(credentials){
     this.http.post('http://localhost:63291/api/account/login', credentials,
     {responseType: 'text'}).subscribe(res =>{
+        localStorage.setItem("user", credentials.username)
         this.authenticate(res)
     })
   }
 
   logout(){
     localStorage.removeItem("token")
+    localStorage.removeItem("user")
+
   }
 
   authenticate(res) {
