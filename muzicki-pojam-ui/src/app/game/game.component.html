@@ -1,13 +1,9 @@
-<div *ngIf="!this.startGame">
-  <mat-spinner></mat-spinner>
-  <button (click)="this.startGame = true">Press</button>
-</div>
-<div *ngIf="this.startGame">
+<div>
   <h1 id="title">{{title | uppercase}}</h1>
   <br><br>
   <mat-card id="overflow">
       <mat-card-content>
-        <h1> {{this.timer}}</h1>
+        <h1 #term> {{this.timer}}</h1>
         <mat-form-field appearance="standard" class="form-field">
           <mat-label>Ime pevača</mat-label>
           <input autocomplete="off" matInput [(ngModel)]="answer.singer" (keyup)="clearLyric()">

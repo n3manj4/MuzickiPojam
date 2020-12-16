@@ -4,7 +4,7 @@ import { GameViewModel } from "../models/game-view-model";
 import { GameService} from "../services/game.service"
 import { SignalRService } from '../services/signal-r.service';
 import { interval } from 'rxjs';
-import { GroupViewModel } from '../models/signal-models/signal-view-model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-game',
@@ -12,7 +12,6 @@ import { GroupViewModel } from '../models/signal-models/signal-view-model';
   styleUrls: ['./game.component.css']
 })
 export class GameComponent implements OnInit {
-
   answer
   game
   title 
@@ -21,8 +20,9 @@ export class GameComponent implements OnInit {
   minWordNumber
   startGame
   timer
+  gameId: any;
 
-  constructor(private gameService: GameService, private signalService: SignalRService) {     
+  constructor(private gameService: GameService, private signalService: SignalRService, private router: Router) {     
     this.answer = new AnswerViewModel
     this.game = new GameViewModel
     this.game.answers = []
@@ -32,26 +32,30 @@ export class GameComponent implements OnInit {
 
     signalService.startGame.subscribe((res) => {
       this.startGame = true
-      this.timer = res
+      this.gameId = res.id
+      this.router.navigate(["/game", res.id])
+      this.initializeGame()
     })
   }
 
   ngOnInit(): void {
-    this.gameService.start().subscribe(res => {
-      this.game = res
-      console.log(this.game)
-      this.title = this.game.term
-    })
-
-
+    
     // Create an Observable that will publish a value on an interval
     const secondsCounter = interval(1000);
     // Subscribe to begin publishing values
     const subscription = secondsCounter.subscribe(n => {
-      this.timer -= 10
       if (this.timer == 0)
         subscription.unsubscribe();
+      else
+        this.timer -= 10
     });
+  }
+
+  initializeGame() {
+    this.gameService.getGame(this.gameId).subscribe(res => {
+      this.game = res
+      document.getElementById("title").innerHTML = this.game.room.term
+    })
   }
   
   clearInput()
@@ -73,11 +77,11 @@ export class GameComponent implements OnInit {
 
     finish()
     {
-      this.gameService.finish(this.game).subscribe(res =>{
+      /* this.gameService.finish(this.game).subscribe(res =>{
         console.log(res)
         this.game = res
         this.submited = true
-      })
+      }) */
     }
 
     clearLyric() {

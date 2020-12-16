@@ -35,9 +35,16 @@ namespace SignalMonitoring.API.Controllers
 
         // GET: api/Game/5
         [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        public async Task<IActionResult> Get(Guid id)
         {
-            return "value";
+            var game = GamesManager.Games[id];
+            if (game is null)
+            {
+                return NotFound("Game not found");
+            }
+
+            return Ok(game);
+
         }
 
         // POST: api/Game
@@ -50,14 +57,14 @@ namespace SignalMonitoring.API.Controllers
                 {
                     foreach (var answer in value.BlueTeam.Answers)
                     {
-                        answer.IsCorrectAnswer = Solr.ValidateAnswer(answer, value.Term);
+                        answer.IsCorrectAnswer = Solr.ValidateAnswer(answer, value.Room.Term);
                     }
                 }
                 else
                 {
                     foreach (var answer in value.RedTeam.Answers)
                     {
-                        answer.IsCorrectAnswer = Solr.ValidateAnswer(answer, value.Term);
+                        answer.IsCorrectAnswer = Solr.ValidateAnswer(answer, value.Room.Term);
                     }
                 }
             });
@@ -69,7 +76,7 @@ namespace SignalMonitoring.API.Controllers
         [HttpPut("{id}")]
         public void Put(Guid id, [FromBody] string value)
         {
-            GamesManager.Games[id].Term = value;
+            GamesManager.Games[id].Room.Term = value;
         }
 
         // DELETE: api/ApiWithActions/5

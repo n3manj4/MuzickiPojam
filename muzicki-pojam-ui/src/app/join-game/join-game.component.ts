@@ -4,6 +4,7 @@ import { GameService} from "../services/game.service"
 import { GroupViewModel } from '../models/signal-models/signal-view-model';
 import { TeamEnum } from '../models/app-enums';
 import { MatTable } from '@angular/material/table';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-join-game',
@@ -17,7 +18,7 @@ export class JoinGameComponent implements OnInit {
   dataSource = [];
   groupToJoin = new GroupViewModel
   
-  constructor(private signalService: SignalRService, private gameService: GameService,) {
+  constructor(private signalService: SignalRService, private gameService: GameService, private router: Router) {
     signalService.groupReceived.subscribe((res: any) => {
       let rowIndex = this.dataSource.findIndex(x => x.id == res.id)
       if (rowIndex < 0) {

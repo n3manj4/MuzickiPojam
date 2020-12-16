@@ -7,22 +7,25 @@ import { GameViewModel } from '../models/game-view-model';
 })
 export class GameService {
 
-  game
+  game: GameViewModel
 
   constructor(private http: HttpClient) {
-    this.game = GameViewModel
   }
 
 
-  finish(game) {
+/*   finish(game) {
     return this.http.post(`http://localhost:63291/api/game/`, game)
   }
 
   start(){
     return this.http.get('http://localhost:63291/api/game')
+  }*/
+
+  getGame(id: string) {
+    return this.http.get('http://localhost:63291/api/game/' + id)
   }
 
   getGroups(){
     return this.http.get('http://localhost:63291/api/game/rooms')
-  }
+  } 
 }

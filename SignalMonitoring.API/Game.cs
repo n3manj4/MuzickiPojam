@@ -18,7 +18,7 @@ namespace SignalMonitoring.API
             RedTeam = new Team(group.MaxPlayers);
             BlueTeam = new Team(group.MaxPlayers);
             Room = group;
-            Term = term;
+            Room.Term = term;
 
             IncreaseTeamNumber(group.Team, player);
         }
@@ -27,7 +27,6 @@ namespace SignalMonitoring.API
         public Guid Id { get; set; }
         public Team RedTeam { get; set; }
         public GroupModel Room { get; set; }
-        public string Term { get; set; }
 
         public void IncreaseTeamNumber(TeamEnum team, Player player)
         {
@@ -70,6 +69,7 @@ namespace SignalMonitoring.API
         public int Position { get; set; }
         public int RedPlayersCount { get; set; }
         public TeamEnum Team { get; set; }
+        public string Term { get; set; }
     }
 
     public enum TeamEnum

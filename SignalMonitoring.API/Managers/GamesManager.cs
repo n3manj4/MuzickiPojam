@@ -28,7 +28,11 @@ namespace SignalMonitoring.API.Managers
 
         public Game this[Guid id]
         {
-            get => m_games[id];
+            get
+            {
+                m_games.TryGetValue(id, out var game);
+                return game;
+            }
             set => m_games[id] = value;
         }
 

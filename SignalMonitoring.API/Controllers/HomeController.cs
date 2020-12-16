@@ -29,7 +29,7 @@ namespace SignalMonitoring.API.Controllers
         {
             foreach (var answer in game.RedTeam.Answers)
             {
-                Solr.ValidateAnswer(answer, game.Term);
+                Solr.ValidateAnswer(answer, game.Room.Term);
             }
         }
     }
