@@ -30,10 +30,10 @@
         <th mat-header-cell *matHeaderCellDef></th>
         <!--<td mat-cell *matCellDef="let element"> {{element.maxPlayers}} </td>-->
         <td mat-cell *matCellDef="let element">
-          <button matTooltip="There is still room in red team" (click)="joinRedTeam(element)" [disabled]="this.shouldDisable(element, 0)" matTooltip="Join red team" mat-mini-fab color="accent">
+          <button [routerLink]="'/game'" matTooltip="There is still room in red team" (click)="joinRedTeam(element)" [disabled]="this.shouldDisable(element, 0)" matTooltip="Join red team" mat-mini-fab color="accent">
             {{element.maxPlayers / 2 - element.redPlayersCount}}
           </button>
-          <button matTooltip="There is still room in blue team" (click)="joinBlueTeam(element)" [disabled]="this.shouldDisable(element, 1)" mat-mini-fab color="primary">
+          <button [routerLink]="'/game'" matTooltip="There is still room in blue team" (click)="joinBlueTeam(element)" [disabled]="this.shouldDisable(element, 1)" mat-mini-fab color="primary">
             {{element.maxPlayers / 2 - element.bluePlayersCount}}
           </button>
         </td>

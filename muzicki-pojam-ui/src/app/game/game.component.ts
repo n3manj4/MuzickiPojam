@@ -14,11 +14,9 @@ import { Router } from '@angular/router';
 export class GameComponent implements OnInit {
   answer
   game
-  title 
   submited 
   words
   minWordNumber
-  startGame
   timer
   gameId: any;
 
@@ -27,28 +25,32 @@ export class GameComponent implements OnInit {
     this.game = new GameViewModel
     this.game.answers = []
     this.minWordNumber = false
-    this.startGame = false
-    this.timer = 0
-
-    signalService.startGame.subscribe((res) => {
-      this.startGame = true
+  }
+  
+  ngOnInit(): void {
+    this.signalService.startGame.subscribe((res) => {
       this.gameId = res.id
       this.router.navigate(["/game", res.id])
       this.initializeGame()
+      this.timer = res.duration
+      this.startTimer()
     })
+    
   }
 
-  ngOnInit(): void {
-    
-    // Create an Observable that will publish a value on an interval
+  startTimer() {
     const secondsCounter = interval(1000);
-    // Subscribe to begin publishing values
+    
     const subscription = secondsCounter.subscribe(n => {
       if (this.timer == 0)
         subscription.unsubscribe();
       else
-        this.timer -= 10
+      {
+        document.getElementById("timer").innerHTML = this.timer
+        this.timer -= 1
+      }
     });
+    
   }
 
   initializeGame() {
