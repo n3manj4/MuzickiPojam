@@ -53,12 +53,15 @@ namespace SignalMonitoring.API.Managers
             return m_games.ContainsKey(id);
         }
 
-        public void CreateNewGame(GroupModel group, Player player)
+        public Game CreateNewGame(GroupModel group, Player player)
         {
             using var context = new MainDbContext();
             var term = context.Terms.Find(new Random().Next(1, context.Terms.Count()));
+            var game = new Game(group, player, term.Term);
 
-            m_games.Add(group.Id, new Game(group, player, term.Term));
+            m_games.Add(group.Id, game);
+
+            return game;
         }
     }
 }

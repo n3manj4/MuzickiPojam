@@ -4,6 +4,7 @@ import { AuthService} from '../services/auth.service'
 
 @Component({
   templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
 
@@ -19,5 +20,5 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  
 }

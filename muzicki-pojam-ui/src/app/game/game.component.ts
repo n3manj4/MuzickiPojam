@@ -5,6 +5,7 @@ import { GameService} from "../services/game.service"
 import { SignalRService } from '../services/signal-r.service';
 import { interval } from 'rxjs';
 import { Router } from '@angular/router';
+import { GroupViewModel } from '../models/signal-models/signal-view-model';
 
 @Component({
   selector: 'app-game',
@@ -19,6 +20,7 @@ export class GameComponent implements OnInit {
   minWordNumber
   timer
   gameId: any;
+  term
 
   constructor(private gameService: GameService, private signalService: SignalRService, private router: Router) {     
     this.answer = new AnswerViewModel
@@ -34,6 +36,14 @@ export class GameComponent implements OnInit {
       this.initializeGame()
       this.timer = res.duration
       this.startTimer()
+    })
+
+    this.gameService.start().subscribe((res: GroupViewModel) => {
+      this.gameId = res.id
+      this.router.navigate(["/game", res.id])
+      this.timer = res.duration
+      this.startTimer()
+      this.term = res.term
     })
     
   }
@@ -72,18 +82,21 @@ export class GameComponent implements OnInit {
     }
     
     next() {
-      console.log(this.answer)
       this.game.answers.push(this.answer)
       this.answer = new AnswerViewModel
     }
 
     finish()
     {
-      /* this.gameService.finish(this.game).subscribe(res =>{
+      let end = { 
+        answers: this.game.answers,
+        term: this.term
+      }
+      this.gameService.finish(end).subscribe(res =>{
         console.log(res)
-        this.game = res
+        this.game.answers = res
         this.submited = true
-      }) */
+      })
     }
 
     clearLyric() {

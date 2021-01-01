@@ -1,4 +1,5 @@
-﻿using CommonServiceLocator;
+﻿using System;
+using CommonServiceLocator;
 using SolrNet;
 using SolrNet.Commands.Parameters;
 using System.Collections.Generic;
@@ -24,9 +25,17 @@ namespace SolrEngine
             // Construct the query
             SolrQuery solrQuery = new SolrQuery(query);
             // Run a basic keyword search, filtering for questions only
-            var posts = solr.Query(solrQuery, query_options);
+            try
+            {
+                var posts = solr.Query(solrQuery, query_options);   
+                return posts.Any();
 
-            return posts.Any();
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+
         }
 
         private static string GenerateQuery(AnswerModel answer)

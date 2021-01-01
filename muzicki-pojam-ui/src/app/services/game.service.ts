@@ -13,13 +13,14 @@ export class GameService {
   }
 
 
-/*   finish(game) {
+   finish(game) {
+     console.log(game)
     return this.http.post(`http://localhost:63291/api/game/`, game)
   }
 
   start(){
     return this.http.get('http://localhost:63291/api/game')
-  }*/
+  }
 
   getGame(id: string) {
     return this.http.get('http://localhost:63291/api/game/' + id)

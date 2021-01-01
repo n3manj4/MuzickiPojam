@@ -12,13 +12,13 @@ export class RegisterComponent implements OnInit {
   form: FormGroup
   hide = true;
 
-  constructor(public auth: AuthService, private formBuildr: FormBuilder) {
-    this.form = formBuildr.group({
+  constructor(public auth: AuthService, private formBuilder: FormBuilder) {
+    this.form = formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
     })
-   }
-
+  }
+  
   ngOnInit(): void {
   }
 

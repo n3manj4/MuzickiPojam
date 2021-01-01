@@ -14,7 +14,6 @@ namespace SignalMonitoring.API.Hubs
 
             if (!GamesManager.Games.Contains(group.Id))
             {
-
                 GamesManager.Games.CreateNewGame(group, player);
             }
             else
@@ -33,6 +32,12 @@ namespace SignalMonitoring.API.Hubs
             {
                 GamesManager.Games[group.Id]
             });
+        }
+
+        public async Task StartSingleGame(GroupModel group, string userName)
+        {
+            var player = new Player(null, userName);
+            GamesManager.Games.CreateNewGame(group, player);
         }
     }
 }

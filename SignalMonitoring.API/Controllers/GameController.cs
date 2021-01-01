@@ -28,9 +28,14 @@ namespace SignalMonitoring.API.Controllers
         }
         // GET: api/Game
         [HttpGet]
-        public Game Get()
+        public GroupModel Get()
         {
-            return new Game();
+            var g = new GroupModel
+            {
+                Duration = 60, Id = Guid.NewGuid(), Term = "violina"
+            };
+
+            return g;
         }
 
         // GET: api/Game/5
@@ -49,27 +54,17 @@ namespace SignalMonitoring.API.Controllers
 
         // POST: api/Game
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Game value, TeamEnum team)
+        public async Task<IActionResult> Post([FromBody] SingleGame game)
         {
             await Task.Run(() =>
             {
-                if (team is TeamEnum.Blue)
+                foreach (var answer in game.Answers)
                 {
-                    foreach (var answer in value.BlueTeam.Answers)
-                    {
-                        answer.IsCorrectAnswer = Solr.ValidateAnswer(answer, value.Room.Term);
-                    }
-                }
-                else
-                {
-                    foreach (var answer in value.RedTeam.Answers)
-                    {
-                        answer.IsCorrectAnswer = Solr.ValidateAnswer(answer, value.Room.Term);
-                    }
+                    answer.IsCorrectAnswer = Solr.ValidateAnswer(answer, game.Term);
                 }
             });
 
-            return Ok(value);
+            return Ok(game.Answers);
         }
 
         // PUT: api/Game/5

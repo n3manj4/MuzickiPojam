@@ -1,0 +1,13 @@
+C:\Users\NMiladin\OneDrive - Quest\Documents\Diplomski\MuzickiPojam\MuzickiPojam\WordCounterEngine\bin\Debug\netcoreapp3.1\WordCounterEngine.exe
+C:\Users\NMiladin\OneDrive - Quest\Documents\Diplomski\MuzickiPojam\MuzickiPojam\WordCounterEngine\bin\Debug\netcoreapp3.1\WordCounterEngine.deps.json
+C:\Users\NMiladin\OneDrive - Quest\Documents\Diplomski\MuzickiPojam\MuzickiPojam\WordCounterEngine\bin\Debug\netcoreapp3.1\WordCounterEngine.runtimeconfig.json
+C:\Users\NMiladin\OneDrive - Quest\Documents\Diplomski\MuzickiPojam\MuzickiPojam\WordCounterEngine\bin\Debug\netcoreapp3.1\WordCounterEngine.runtimeconfig.dev.json
+C:\Users\NMiladin\OneDrive - Quest\Documents\Diplomski\MuzickiPojam\MuzickiPojam\WordCounterEngine\bin\Debug\netcoreapp3.1\WordCounterEngine.dll
+C:\Users\NMiladin\OneDrive - Quest\Documents\Diplomski\MuzickiPojam\MuzickiPojam\WordCounterEngine\bin\Debug\netcoreapp3.1\WordCounterEngine.pdb
+C:\Users\NMiladin\OneDrive - Quest\Documents\Diplomski\MuzickiPojam\MuzickiPojam\WordCounterEngine\obj\Debug\netcoreapp3.1\WordCounterEngine.csprojAssemblyReference.cache
+C:\Users\NMiladin\OneDrive - Quest\Documents\Diplomski\MuzickiPojam\MuzickiPojam\WordCounterEngine\obj\Debug\netcoreapp3.1\WordCounterEngine.csproj.CoreCompileInputs.cache
+C:\Users\NMiladin\OneDrive - Quest\Documents\Diplomski\MuzickiPojam\MuzickiPojam\WordCounterEngine\obj\Debug\netcoreapp3.1\WordCounterEngine.AssemblyInfoInputs.cache
+C:\Users\NMiladin\OneDrive - Quest\Documents\Diplomski\MuzickiPojam\MuzickiPojam\WordCounterEngine\obj\Debug\netcoreapp3.1\WordCounterEngine.AssemblyInfo.cs
+C:\Users\NMiladin\OneDrive - Quest\Documents\Diplomski\MuzickiPojam\MuzickiPojam\WordCounterEngine\obj\Debug\netcoreapp3.1\WordCounterEngine.dll
+C:\Users\NMiladin\OneDrive - Quest\Documents\Diplomski\MuzickiPojam\MuzickiPojam\WordCounterEngine\obj\Debug\netcoreapp3.1\WordCounterEngine.pdb
+C:\Users\NMiladin\OneDrive - Quest\Documents\Diplomski\MuzickiPojam\MuzickiPojam\WordCounterEngine\obj\Debug\netcoreapp3.1\WordCounterEngine.genruntimeconfig.cache

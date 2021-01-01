@@ -1,19 +1,21 @@
-<mat-card>
-    <form [formGroup]="form" (ngSubmit)="auth.register(form.value)">
-        <mat-form-field appearance="fill">
-            <mat-label>User name</mat-label>
-            <input matInput formControlName="username">
-        </mat-form-field>
-        <br>
-        <mat-form-field appearance="fill">
-            <mat-label>Enter your password</mat-label>
-            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
-            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </button>
-        </mat-form-field>
-        <br>
-        <button mat-raised-button color="primary" [disabled]="!form.valid">Register</button>
-    </form>
-    <button mat-raised-button color="primary" (click)="auth.home()">Home</button>
-</mat-card>
+<div class="login-form"> 
+    <mat-card>
+        <h1 class="text-center"> Register </h1>
+        <form [formGroup]="form" (ngSubmit)="auth.register(form.value)">
+            <mat-form-field class="btn-block">
+                <mat-label>User name</mat-label>
+                <input autocomplete="off" matInput formControlName="username" autocomplete="false" readonly onfocus="this.removeAttribute('readonly');">
+            </mat-form-field>
+            <br>
+            <mat-form-field class="btn-block">
+                <mat-label>Enter your password</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" a>
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+            <br>
+            <button mat-raised-button color="primary" [disabled]="!form.valid">Register</button>
+        </form>
+    </mat-card>
+</div>
