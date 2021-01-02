@@ -1,5 +1,11 @@
-<div>
-    <button [routerLink]="'/new-game'" class="mat-raised-button" color="primary">Create room</button>
-    <button [routerLink]="'/join-game'" class="mat-raised-button" color="primary">Join room</button>
-    <button [routerLink]="'/game'" class="mat-raised-button" color="primary">Single match</button>
+<div class="login-form"> 
+    <mat-card>
+        <h1>Hello, {{ user }}</h1>
+         <br>
+        <form>
+            <button mat-raised-button [routerLink]="'/new-game'" class="btn-block" color="primary">Create room</button>
+            <button mat-raised-button [routerLink]="'/join-game'" class="btn-block" color="primary">Join room</button>
+            <button mat-raised-button [routerLink]="'/game'" class="btn-block" color="primary">Single match</button>
+        </form>
+    </mat-card>
 </div>

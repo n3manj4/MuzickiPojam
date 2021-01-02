@@ -9,9 +9,9 @@ import { JoinGameComponent } from './join-game/join-game.component';
 
 
 const routes: Routes = [
-  { path: '', component: RegisterComponent},
+  { path: '', component: LoginComponent},
   { path: 'home', component: HomeComponent},
-  { path: 'login', component: LoginComponent},
+  { path: 'register', component: RegisterComponent},
   { path: 'game', component: GameComponent},
   { path: 'game/:id', component: GameComponent},
   { path: 'new-game', component: NewGameComponent},

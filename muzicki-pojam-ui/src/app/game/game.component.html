@@ -1,17 +1,16 @@
-<div>
+<div class="login-form">
   <h1 id="title"> {{this.term}} </h1>
   <br><br>
   <mat-card id="overflow">
       <mat-card-content>
         <h1 id="timer"> {{this.timer}}</h1>
-        <mat-form-field appearance="standard" class="form-field">
+        <mat-form-field appearance="standard" class="form-field" style="float: left;">
           <mat-label>Ime pevača</mat-label>
           <input autocomplete="off" matInput [(ngModel)]="answer.singer" (keyup)="clearLyric()">
           <button mat-button *ngIf="answer.singer" matSuffix mat-icon-button aria-label="Clear" (click)="answer.singer=''">
             <mat-icon>close</mat-icon>
           </button>
         </mat-form-field>
-
         <mat-form-field appearance="standard" class="form-field" style="float: right;">
           <mat-label>Naziv pesme</mat-label>
           <input autocomplete="off" matInput [(ngModel)]="answer.title" (keyup)="clearLyric()">
@@ -19,6 +18,8 @@
             <mat-icon>close</mat-icon>
           </button>
         </mat-form-field>
+        <br>
+        <br>
         <br>
         <br>
         <div class="separator">ili</div>
@@ -34,9 +35,6 @@
           <button mat-button color="primary" (click)="next()" [disabled]="!minWordNumber && !(answer.title && answer.singer)">Sledeći odgovor</button>
       </mat-card-actions>
       <div style="overflow: auto; height: 300px;">
-        <!--<mat-list role="list" *ngFor="let answer of game.answers">
-          <mat-list-item role="listitem">{{answer.singer}} - {{answer.title}} {{answer.lyric}}</mat-list-item>
-        </mat-list>-->
         <div *ngFor="let answer of game.answers" style="height: 60px;">
           {{answer.singer}} - {{answer.title}} {{answer.lyric}}
           <button style="background-color: #4CAF50; float:right" *ngIf="answer.isCorrectAnswer && submited" mat-flat-button>Tacno </button>

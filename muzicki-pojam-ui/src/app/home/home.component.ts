@@ -8,9 +8,10 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
+  user
  
   constructor(private router: Router) {
-
+      this.user = localStorage.getItem("user")
   }
 
   ngOnInit(): void {

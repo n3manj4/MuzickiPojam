@@ -1,0 +1,13 @@
+.btn-block {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
+
+.bold {
+    font-weight: bold;
+}

@@ -1,7 +1,8 @@
-<div class="example-container mat-elevation-z8">
+<div class="example-container mat-elevation-z8 login-form">
+  <h1>Select team</h1> 
     <table #table mat-table [dataSource]="dataSource">
   
-      <ng-container matColumnDef="position">
+      <ng-container matColumnDef="number">
         <th mat-header-cell *matHeaderCellDef> No. </th>
         <td mat-cell *matCellDef="let element; let i = index"> {{ i + 1 }} </td>
       </ng-container>
@@ -27,8 +28,7 @@
       </ng-container>
 
       <ng-container matColumnDef="join">
-        <th mat-header-cell *matHeaderCellDef></th>
-        <!--<td mat-cell *matCellDef="let element"> {{element.maxPlayers}} </td>-->
+        <th mat-header-cell *matHeaderCellDef> Join team</th>
         <td mat-cell *matCellDef="let element">
           <button [routerLink]="'/game'" matTooltip="There is still room in red team" (click)="joinRedTeam(element)" [disabled]="this.shouldDisable(element, 0)" matTooltip="Join red team" mat-mini-fab color="accent">
             {{element.maxPlayers / 2 - element.redPlayersCount}}

@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 export class JoinGameComponent implements OnInit {
   @ViewChild('table') table: MatTable<Element>;
 
-  displayedColumns = ['position', 'name', 'duration', 'noOfPlayers', 'maxPlayers', 'join'];
+  displayedColumns = ['number', 'name', 'duration', 'noOfPlayers', 'maxPlayers', 'join'];
   dataSource = [];
   groupToJoin = new GroupViewModel
   

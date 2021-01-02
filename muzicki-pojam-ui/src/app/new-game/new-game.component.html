@@ -1,24 +1,16 @@
-<mat-slider
-  thumbLabel
-  tickInterval="1000"
-  min="2"
-  max="10"
-  step=2
-  [(ngModel)]="group.maxPlayers"> 
-</mat-slider>
-<mat-slider
-  thumbLabel
-  tickInterval="1000"
-  min="60"
-  max="180"
-  step=10
-  [(ngModel)]="group.duration"> Game duration</mat-slider>
-  <mat-radio-group aria-label="Select an option">
-    <mat-radio-button (change)="this.radioChanged(0)" value="red" checked>Red team</mat-radio-button>
-    <mat-radio-button (change)="this.radioChanged(1)" value="blue">Blue team</mat-radio-button>
-  </mat-radio-group>
-  <mat-form-field appearance="fill">
-    <mat-label>Room name</mat-label>
-    <input matInput [(ngModel)]="group.name">
-</mat-form-field>
-<button [routerLink]="'/game'" class="mat-raised-button" color="primary" (click)="createGame()">Create game</button>
+<div class="login-form"> 
+  <mat-card>
+    <label>Number of players: <label class="bold">{{ group.maxPlayers }} </label></label><mat-slider class="btn-block" thumbLabel tickInterval="1000" min="2"max="10"step=2 [(ngModel)]="group.maxPlayers"></mat-slider>
+    <label>Game duration: <label class="bold">{{ group.duration }}</label></label><mat-slider class="btn-block" thumbLabel tickInterval="1000" min="60" max="180" step=10 [(ngModel)]="group.duration"> Game duration</mat-slider>
+    <label class="btn-block">Choose team:</label>
+    <mat-radio-group aria-label="Select an option">
+      <mat-radio-button (change)="this.radioChanged(0)" value="red" checked>Red team</mat-radio-button>
+      <mat-radio-button (change)="this.radioChanged(1)" value="blue">Blue team</mat-radio-button>
+    </mat-radio-group>
+    <mat-form-field class="btn-block" >
+      <mat-label>Room name</mat-label>
+      <input autocomplete="off" matInput [(ngModel)]="group.name">
+    </mat-form-field>
+    <button mat-raised-button [routerLink]="'/game'" class="mat-raised-button" color="primary" (click)="createGame()">Create game</button>
+  </mat-card>
+</div>

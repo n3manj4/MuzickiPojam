@@ -1,9 +1,21 @@
 .example-container {
     height: 400px;
-    width: 250%;
+    width: 60%;
     overflow: auto;
   }
   
   table {
     width: 100%;
   }
+
+  .mat-column-name {
+    width: 25%;
+  }
+  
+  .mat-column-number {
+    width: 5%;
+  }
+   
+h1 {
+  color : royalblue
+}
