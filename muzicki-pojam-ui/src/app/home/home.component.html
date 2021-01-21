@@ -5,7 +5,7 @@
         <form>
             <button mat-raised-button [routerLink]="'/new-game'" class="btn-block" color="primary">Create room</button>
             <button mat-raised-button [routerLink]="'/join-game'" class="btn-block" color="primary">Join room</button>
-            <button mat-raised-button [routerLink]="'/game'" class="btn-block" color="primary">Single match</button>
+            <button mat-raised-button class="btn-block" (click)="startSingleGame()" color="primary">Single match</button>
         </form>
     </mat-card>
 </div>

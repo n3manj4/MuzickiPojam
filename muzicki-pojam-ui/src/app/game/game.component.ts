@@ -37,15 +37,6 @@ export class GameComponent implements OnInit {
       this.timer = res.duration
       this.startTimer()
     })
-
-    this.gameService.start().subscribe((res: GroupViewModel) => {
-      this.gameId = res.id
-      this.router.navigate(["/game", res.id])
-      this.timer = res.duration
-      this.startTimer()
-      this.term = res.term
-    })
-    
   }
 
   startTimer() {

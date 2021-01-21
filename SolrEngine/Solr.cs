@@ -27,7 +27,8 @@ namespace SolrEngine
             // Run a basic keyword search, filtering for questions only
             try
             {
-                var posts = solr.Query(solrQuery, query_options);   
+                var posts = solr.Query(solrQuery, query_options); 
+
                 return posts.Any();
 
             }

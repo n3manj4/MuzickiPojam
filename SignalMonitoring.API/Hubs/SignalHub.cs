@@ -1,6 +1,9 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR;
 using SignalMonitoring.API.Managers;
+using SignalMonitoring.API.Persistence;
 
 namespace SignalMonitoring.API.Hubs
 {
@@ -8,16 +11,13 @@ namespace SignalMonitoring.API.Hubs
     {
         public async Task JoinGroup(GroupModel group, string userName)
         {
-            await Groups.AddToGroupAsync(Context.ConnectionId, group.Name);
-
-            var player = new Player(Context.ConnectionId, userName);
-
             if (!GamesManager.Games.Contains(group.Id))
             {
-                GamesManager.Games.CreateNewGame(group, player);
+				await CreateNewGameAsync(group, userName);
             }
             else
             {
+                var player = new Player(Context.ConnectionId, userName);
                 GamesManager.Games.AddToRoom(group, player);
 
                 var g = GamesManager.Games[group.Id];
@@ -34,10 +34,31 @@ namespace SignalMonitoring.API.Hubs
             });
         }
 
-        public async Task StartSingleGame(GroupModel group, string userName)
-        {
-            var player = new Player(null, userName);
+        private async Task CreateNewGameAsync(GroupModel group, string userName)
+		{
+            await Groups.AddToGroupAsync(Context.ConnectionId, group.Name);
+
+            var player = new Player(Context.ConnectionId, userName);
+
             GamesManager.Games.CreateNewGame(group, player);
+        }
+
+        public async Task StartSingleGame(string userName)
+        {
+            using var context = new MainDbContext();
+            var term = context.Terms.Find(new Random().Next(1, context.Terms.Count()));
+
+            var g = new GroupModel
+            {
+                Duration = 60,
+                Id = Guid.NewGuid(),
+                Term = term.Term,
+                Name = userName
+            };
+
+			await CreateNewGameAsync(g, userName);
+
+            await Clients.Group(g.Name).SendCoreAsync("StartGame", new object[] { g });
         }
     }
 }

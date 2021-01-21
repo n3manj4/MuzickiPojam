@@ -57,4 +57,8 @@ export class SignalRService {
       let username = localStorage.getItem("name")
       this.hubConnection.send("joinGroup", group, username)
   }
+
+  public startSingleGame(userName) {
+    this.hubConnection.send("StartSingleGame", userName)
+  }
 }

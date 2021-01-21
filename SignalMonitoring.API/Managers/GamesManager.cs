@@ -9,7 +9,7 @@ namespace SignalMonitoring.API.Managers
     {
         private static GamesManager s_instance;
         private static readonly object s_padlock = new object();
-        private Dictionary<Guid, Game> m_games = new Dictionary<Guid, Game>();
+        private readonly Dictionary<Guid, Game> m_games = new Dictionary<Guid, Game>();
 
         private GamesManager()
         {
