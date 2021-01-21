@@ -1,0 +1,1 @@
+http://localhost:8983/solr/MuzickiPojam/admin/luke?fl=lyric&numTerms=500

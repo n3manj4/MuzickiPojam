@@ -32,7 +32,7 @@ namespace SignalMonitoring.API.Controllers
         {
             var g = new GroupModel
             {
-                Duration = 60, Id = Guid.NewGuid(), Term = "violina"
+                Duration = 60, Id = Guid.NewGuid(), Term = m_termService.Term
             };
 
             return g;

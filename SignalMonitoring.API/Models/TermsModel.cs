@@ -6,9 +6,11 @@ namespace SignalMonitoring.API.Persistence
     public class TermsModel
     {
         [Key]
-        public int TermId { get; set; }
+        public int Id { get; set; }
 
         public string Term { get; set; }
 
-    }
+        public int Frequency { get; set; }
+		public string CompositeTerm { get; set; }
+	}
 }

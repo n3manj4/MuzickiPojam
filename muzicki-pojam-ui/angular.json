@@ -27,8 +27,7 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
-            "scripts": [
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -124,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "muzicki-pojam-ui"
+  "defaultProject": "muzicki-pojam-ui",
+  "cli": {
+    "analytics": "485fdb10-a40d-4446-bb11-f6035517ee61"
+  }
 }

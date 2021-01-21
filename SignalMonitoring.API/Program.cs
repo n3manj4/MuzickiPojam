@@ -10,7 +10,7 @@ namespace SignalMonitoring.API
     {
         public static void Main(string[] args)
         {
-            SolrNet.Startup.Init<AnswerModel>("http://localhost:8983/solr/MuzickiPojam");
+            SolrNet.Startup.Init<AnswerModel>("http://localhost:8983/solr/MP");
             CreateHostBuilder(args).Build().Run();
         }
 

@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Configuration;
+using Microsoft.Extensions.Configuration;
 
 namespace SignalMonitoring.API.Persistence
 {
@@ -15,7 +15,12 @@ namespace SignalMonitoring.API.Persistence
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server = QGJHV6Y2\SQLEXPRESS; Initial catalog = FG; Trusted_Connection=True;");
+            IConfigurationRoot configuration = new ConfigurationBuilder()
+           .AddJsonFile("appsettings.json")
+           .Build();
+
+            var connectionString = configuration.GetSection("ConnectionString").Value;
+            optionsBuilder.UseSqlServer(connectionString);
         }
 
         public DbSet<SignalDataModel> Signals { get; set; }

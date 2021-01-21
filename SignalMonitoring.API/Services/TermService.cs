@@ -17,17 +17,20 @@ namespace SignalMonitoring.API.Services
 
         public string GetRandomTerm()
         {
+            var term = string.Empty;
             try
             {
                 var count = m_mainDbContext.Terms.Count();
                 var item = m_mainDbContext.Terms.Find(m_random.Next(1, count));
+
+                term = "jedna";//item.Term;
             }
             catch (Exception e)
-            {
+            { 
                 Console.WriteLine(e);
             }
 
-            return "violina"; //item.Term;
+            return term;
         }
 
         public string Term { get; set; }

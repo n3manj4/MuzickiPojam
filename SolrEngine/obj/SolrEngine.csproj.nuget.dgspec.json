@@ -1,41 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\NMiladin\\OneDrive - Quest\\Documents\\Diplomski\\MuzickiPojam\\MuzickiPojam\\SolrEngine\\SolrEngine.csproj": {}
+    "D:\\Repos\\MuzickiPojam\\SolrEngine\\SolrEngine.csproj": {}
   },
   "projects": {
-    "C:\\Users\\NMiladin\\OneDrive - Quest\\Documents\\Diplomski\\MuzickiPojam\\MuzickiPojam\\SolrEngine\\SolrEngine.csproj": {
+    "D:\\Repos\\MuzickiPojam\\SolrEngine\\SolrEngine.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\NMiladin\\OneDrive - Quest\\Documents\\Diplomski\\MuzickiPojam\\MuzickiPojam\\SolrEngine\\SolrEngine.csproj",
+        "projectUniqueName": "D:\\Repos\\MuzickiPojam\\SolrEngine\\SolrEngine.csproj",
         "projectName": "SolrEngine",
-        "projectPath": "C:\\Users\\NMiladin\\OneDrive - Quest\\Documents\\Diplomski\\MuzickiPojam\\MuzickiPojam\\SolrEngine\\SolrEngine.csproj",
-        "packagesPath": "C:\\Users\\NMiladin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\NMiladin\\OneDrive - Quest\\Documents\\Diplomski\\MuzickiPojam\\MuzickiPojam\\SolrEngine\\obj\\",
+        "projectPath": "D:\\Repos\\MuzickiPojam\\SolrEngine\\SolrEngine.csproj",
+        "packagesPath": "C:\\Users\\neman\\.nuget\\packages\\",
+        "outputPath": "D:\\Repos\\MuzickiPojam\\SolrEngine\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\NMiladin\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 19.2.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 20.1.config",
+          "C:\\Users\\neman\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
         ],
         "sources": {
-          "C:\\LocalNuget": {},
-          "C:\\Program Files (x86)\\DevExpress 18.2\\Components\\System\\Components\\Packages": {},
-          "C:\\Program Files (x86)\\DevExpress 19.1\\Components\\System\\Components\\Packages": {},
-          "C:\\Program Files (x86)\\DevExpress 19.2\\Components\\System\\Components\\Packages": {},
-          "C:\\Program Files (x86)\\DevExpress 20.1\\Components\\System\\Components\\Packages": {},
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "netstandard2.0": {
+            "targetAlias": "netstandard2.0",
             "projectReferences": {}
           }
         },
@@ -47,6 +38,7 @@
       },
       "frameworks": {
         "netstandard2.0": {
+          "targetAlias": "netstandard2.0",
           "dependencies": {
             "NETStandard.Library": {
               "suppressParent": "All",
@@ -69,7 +61,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
