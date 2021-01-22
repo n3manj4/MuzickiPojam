@@ -9,6 +9,7 @@ namespace SignalMonitoring.API
     {
         //Conflict comment
         //another line on repo
+        //and another on repo
         public List<AnswerModel> Answers { get; set; } = new List<AnswerModel>();
         public string Term { get; set; }
     }
