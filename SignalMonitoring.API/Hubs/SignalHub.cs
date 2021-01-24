@@ -17,6 +17,8 @@ namespace SignalMonitoring.API.Hubs
             }
             else
             {
+                await Groups.AddToGroupAsync(Context.ConnectionId, group.Name);
+
                 var player = new Player(Context.ConnectionId, userName);
                 GamesManager.Games.AddToRoom(group, player);
 
@@ -60,5 +62,12 @@ namespace SignalMonitoring.API.Hubs
 
             await Clients.Group(g.Name).SendCoreAsync("StartGame", new object[] { g });
         }
+
+        public async Task GetResults(string id)
+		{
+            var guid = Guid.Parse(id);
+            var game = GamesManager.Games[guid];
+            var team = game.GetPlayerTeam(Context.ConnectionId);
+		}
     }
 }

@@ -5,7 +5,6 @@ import { GameService} from "../services/game.service"
 import { SignalRService } from '../services/signal-r.service';
 import { interval } from 'rxjs';
 import { Router } from '@angular/router';
-import { GroupViewModel } from '../models/signal-models/signal-view-model';
 
 @Component({
   selector: 'app-game',
@@ -21,12 +20,14 @@ export class GameComponent implements OnInit {
   timer
   gameId: any;
   term
+  inProgress: boolean;
 
   constructor(private gameService: GameService, private signalService: SignalRService, private router: Router) {     
     this.answer = new AnswerViewModel
     this.game = new GameViewModel
     this.game.answers = []
     this.minWordNumber = false
+    this.inProgress = true
   }
   
   ngOnInit(): void {
@@ -43,12 +44,13 @@ export class GameComponent implements OnInit {
     const secondsCounter = interval(1000);
     
     const subscription = secondsCounter.subscribe(n => {
-      if (this.timer == 0)
-        subscription.unsubscribe();
-      else
-      {
+      if (this.timer >= 0) {
         document.getElementById("timer").innerHTML = this.timer
-        this.timer -= 1
+        this.timer -= 10
+      }
+      else {
+        this.goToResultPage()
+        subscription.unsubscribe();
       }
     });
     
@@ -93,5 +95,9 @@ export class GameComponent implements OnInit {
     clearLyric() {
       this.answer.lyric = ''
       this.minWordNumber = false
+    }
+
+    goToResultPage() {
+      this.router.navigate([this.router.url + "/result"])
     }
 }

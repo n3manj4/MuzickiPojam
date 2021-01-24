@@ -37,12 +37,12 @@ namespace SignalMonitoring.API
         {
             if (team is TeamEnum.Blue)
             {
-                BlueTeam.Players.Add(player);
+                BlueTeam.AddPlayer(player);
                 Room.BluePlayersCount++;
             }
             else
             {
-                RedTeam.Players.Add(player);
+                RedTeam.AddPlayer(player);
                 Room.RedPlayersCount++;
             }
         }
@@ -56,6 +56,21 @@ namespace SignalMonitoring.API
         {
             return BlueTeam.Players.Select(x => x.Id).ToList();
         }
+
+        public TeamEnum GetPlayerTeam(string id)
+		{
+            if (BlueTeam.IsPlayerInTeam(id))
+			{
+                return TeamEnum.Blue;
+			}
+
+            if (RedTeam.IsPlayerInTeam(id))
+			{
+                return TeamEnum.Red;
+            }
+
+            return TeamEnum.Undefined;
+		}
     }
 
     public class GroupModel
@@ -78,9 +93,10 @@ namespace SignalMonitoring.API
     }
 
     public enum TeamEnum
-    {
+    { 
         Red,
-        Blue
+        Blue,
+        Undefined
     }
 
     public class Team
@@ -102,6 +118,11 @@ namespace SignalMonitoring.API
                 Players.Add(player);
             }
         }
+
+        public bool IsPlayerInTeam(string id)
+		{
+            return Players.Any(x => x.Id == id);
+		}
     }
 
     public class Player

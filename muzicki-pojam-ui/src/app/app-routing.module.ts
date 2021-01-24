@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { GameComponent } from './game/game.component';
 import { NewGameComponent } from './new-game/new-game.component';
 import { JoinGameComponent } from './join-game/join-game.component';
+import { ResultComponent } from './result/result.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'game', component: GameComponent},
   { path: 'game/:id', component: GameComponent},
   { path: 'new-game', component: NewGameComponent},
-  { path: 'join-game', component: JoinGameComponent}
+  { path: 'join-game', component: JoinGameComponent},
+  { path: 'game/:id/result', component: ResultComponent}
 
 ];
 

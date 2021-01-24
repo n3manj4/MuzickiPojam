@@ -27,7 +27,7 @@ export class JoinGameComponent implements OnInit {
       else
         this.dataSource[rowIndex] = res.room
         
-      this.table.renderRows()
+      //this.table.renderRows()
     })
 
     gameService.getGroups().subscribe((res: any) => {

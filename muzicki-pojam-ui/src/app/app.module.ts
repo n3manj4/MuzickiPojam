@@ -31,6 +31,7 @@ import {MatTableModule} from '@angular/material/table';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { ResultComponent } from './result/result.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     GameComponent,
     NewGameComponent,
     JoinGameComponent,
+    ResultComponent,
   ],
   imports: [
     BrowserModule,
