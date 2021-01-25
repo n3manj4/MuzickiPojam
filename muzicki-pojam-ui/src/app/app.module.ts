@@ -32,6 +32,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ResultComponent } from './result/result.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { ResultTableComponent } from './result-table/result-table.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,7 @@ import { ResultComponent } from './result/result.component';
     NewGameComponent,
     JoinGameComponent,
     ResultComponent,
+    ResultTableComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,7 +68,7 @@ import { ResultComponent } from './result/result.component';
     MatTooltipModule,
     MatRadioModule,
     MatProgressSpinnerModule,
-
+    MatGridListModule
   ],
   providers: [
     GameService,

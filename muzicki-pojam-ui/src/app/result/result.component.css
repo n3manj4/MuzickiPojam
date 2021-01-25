@@ -1,0 +1,19 @@
+#first {
+    width: 45%;
+    float:left; /* add this */
+    border: 1px solid red;
+}
+
+#second {
+    width: 45%;
+    border: 1px solid blue;
+    float: right; /* add this */
+}
+
+.center {
+    width: 80%;
+    height: inherit;
+    margin: 5% auto;
+    margin-bottom: 15px;
+    border: 1px solid orange;
+}

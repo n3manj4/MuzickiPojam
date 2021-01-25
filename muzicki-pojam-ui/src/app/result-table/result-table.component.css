@@ -1,0 +1,23 @@
+#red-font {
+    color: red
+}
+
+#blue-font {
+    color: blue
+}
+
+#green-font {
+    color: green
+}
+
+#total {
+    font-weight: bold;
+}
+
+tr.mat-footer-row {
+    font-weight: bold;
+}
+
+table {
+    width: 100%;
+}
