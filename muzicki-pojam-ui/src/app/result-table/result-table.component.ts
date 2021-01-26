@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, Output, EventEmitter } from '@angular/core';
 import { MatTable } from '@angular/material/table';
 
 export interface ResultElement {
@@ -6,13 +6,6 @@ export interface ResultElement {
   answer: string;
   points: number;
 }
-
-const ELEMENT_DATA: ResultElement[] = [
-  {position: 1, answer: 'Mile Kitić - Vuk samotnjak', points: 3},
-  {position: 2, answer: 'Džej - Ugasila si me', points: 5},
-  {position: 3, answer: 'Mile Kitić - Vuk samotnjak', points: 0},
-  {position: 4, answer: 'Mile Kitić - Vuk samotnjak', points: 3},
-  ];
 
 @Component({
   selector: 'app-result-table',
@@ -22,8 +15,8 @@ const ELEMENT_DATA: ResultElement[] = [
 export class ResultTableComponent implements OnInit {
 
   @Input() dataSource: ResultElement[]
+  @Output() total = new EventEmitter<number>();
 
-  @ViewChild('table') table: MatTable<Element>;
   displayedColumns: string[] = ['position', 'answer', 'points'];
 
   constructor() { }
@@ -31,7 +24,9 @@ export class ResultTableComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getTotalCost() {
-    return this.dataSource.map(t => t.points).reduce((acc, value) => acc + value, 0);
+  getTotalPoints() {
+    let result = this.dataSource.map(t => t.points).reduce((acc, value) => acc + value, 0);
+    this.total.emit(result)
+    return result
   }
 }

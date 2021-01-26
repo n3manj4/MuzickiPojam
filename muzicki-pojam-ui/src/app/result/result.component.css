@@ -1,19 +1,33 @@
-#first {
-    width: 45%;
-    float:left; /* add this */
-    border: 1px solid red;
+
+.container {
+    height: calc(100vh - 65px);
+    display: grid;
+    grid-template-columns: 40px auto 50px auto 40px ;
+    grid-template-rows: 10%  50%  auto;
+  }
+
+.left {
+    grid-column-start: 2;
+    grid-row-start: 2;
 }
 
-#second {
-    width: 45%;
-    border: 1px solid blue;
-    float: right; /* add this */
+.right {
+    grid-column-start: 4;
+    grid-row-start: 2;
+}
+
+.bottom {
+    grid-column-start: 2;
+    grid-column-end: 5;
+    grid-row-start: 3;
 }
 
 .center {
-    width: 80%;
-    height: inherit;
-    margin: 5% auto;
-    margin-bottom: 15px;
-    border: 1px solid orange;
-}
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 90%;
+  }
+
+

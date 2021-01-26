@@ -1,13 +1,23 @@
-<div>
-    <div id="first">
+<div class="container">
+    <div class="left">
         <h1 id="red-font">Red team answers</h1>
-        <app-result-table [dataSource]="dataSource"></app-result-table>
+        <app-result-table [dataSource]="dataSource1" (total)="onTotalRed($event)"></app-result-table>
     </div>
-    <div style="width: max-content;"></div>
-    <div id="second">
+    <div class="right">
         <h1 id="blue-font">Blue team answers</h1>
-        <app-result-table [dataSource]="dataSource"></app-result-table>
+        <app-result-table [dataSource]="dataSource2" (total)="onTotalBlue($event)"></app-result-table>
+    </div>
+    <div *ngIf="isRedWon()" class="bottom center" >
+        <img src="assets/img/thropy-red.png" alt="Red won">
+        <h1 style="color:red">Red team won!</h1>
+    </div>
+    <div *ngIf="isBlueWon()" class="bottom center">
+        <img src="assets/img/thropy-blue.png" alt="Blue won">
+        <h1 style="color:royalblue">Blue team won!</h1>
+    </div>
+    <div *ngIf="!isBlueWon() && !isRedWon()" class="bottom center">
+        <img src="assets/img/draw.png" alt="Blue won">
+        <h1 style="color:royalblue">It's a draw!</h1>
     </div>
 </div>
-<h1>asdf</h1>
   
