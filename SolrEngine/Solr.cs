@@ -4,37 +4,39 @@ using SolrNet;
 using SolrNet.Commands.Parameters;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace SolrEngine
 {
-    public static class Solr
+    public class Solr
     {
-        public static bool ValidateAnswer(AnswerModel answer, string term)
-        {
-            var solr = ServiceLocator.Current.GetInstance<ISolrOperations<AnswerModel>>();
+        private ISolrOperations<AnswerModel> solr;
+		private QueryOptions query_options;
 
-            QueryOptions query_options = new QueryOptions
+		public Solr()
+		{
+            solr = ServiceLocator.Current.GetInstance<ISolrOperations<AnswerModel>>();
+            query_options = new QueryOptions
             {
                 Rows = 10,
                 StartOrCursor = new StartOrCursor.Start(0)
             };
+        }
+        public async Task<string> ValidateAnswer(AnswerModel answer, string term)
+        {
             string query = term.Prerequisite().And();
 
             query += GenerateQuery(answer);
             
-            // Construct the query
-            SolrQuery solrQuery = new SolrQuery(query);
-            // Run a basic keyword search, filtering for questions only
             try
             {
-                var posts = solr.Query(solrQuery, query_options); 
+                var posts = await solr.QueryAsync(new SolrQuery(query), query_options); 
 
-                return posts.Any();
-
+                return posts.First().Id;
             }
-            catch (Exception e)
-            {
-                return false;
+            catch (Exception)
+			{
+                return string.Empty;
             }
 
         }
@@ -51,14 +53,19 @@ namespace SolrEngine
             return singer.And(title);
         }
 
-        private static string And(this string s, string and = "")
+    }
+
+	public static class MyClass
+	{
+        public static string And(this string s, string and = "")
         {
             return s + " && " + and;
         }
 
-        private static string Prerequisite(this string s)
+        public static string Prerequisite(this string s)
         {
             return $"lyric:\"{s}\"";
         }
-    }
+
+	}
 }

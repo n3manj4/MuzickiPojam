@@ -49,7 +49,7 @@ export class GameComponent implements OnInit {
         this.timer -= 10
       }
       else {
-        this.goToResultPage()
+        //this.goToResultPage()
         subscription.unsubscribe();
       }
     });
@@ -85,11 +85,14 @@ export class GameComponent implements OnInit {
         answers: this.game.answers,
         term: this.term
       }
-      this.gameService.finish(end).subscribe(res =>{
+      /*this.gameService.finish(end).subscribe(res =>{
         console.log(res)
         this.game.answers = res
         this.submited = true
-      })
+      })*/
+      let id = this.router.url.split("/")[2]
+      this.signalService.validateAnswers(id, this.game.answers)
+      this.goToResultPage()
     }
 
     clearLyric() {

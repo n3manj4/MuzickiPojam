@@ -38,8 +38,8 @@ namespace SignalMonitoring.API.Services
                 //save changes and if the signal has stored in db return true;
                 return await m_mainDbContext.SaveChangesAsync() > 0;
             }
-            catch (Exception e)
-            {
+            catch (Exception)
+			{
                 //log the exception or take some actions
 
                 return false;

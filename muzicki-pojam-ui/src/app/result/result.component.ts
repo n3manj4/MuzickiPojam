@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ResultsViewModel } from '../models/ResultsViewModel';
 import { SignalRService } from '../services/signal-r.service';
 export interface ResultElement {
   position: number;
@@ -34,16 +35,19 @@ export class ResultComponent implements OnInit {
   redPoints: number
   bluePoints: number
   
-  dataSource1 = ELEMENT_DATA 
-  dataSource2 = ELEMENT_DATA2
+  redTeamResults  
+  blueTeamResults 
+
   constructor(private  router: Router, private signalService: SignalRService) {
     this.redPoints = 0;
     this.bluePoints = 0;
    }
 
   ngOnInit(): void {
-    let id = this.router.url.split("/")[2]
-    this.signalService.getResults(id)
+    this.signalService.results.subscribe((res: ResultsViewModel) => {
+      this.redTeamResults = res.redTeamResults
+      this.blueTeamResults = res.blueTeamResults
+    })
   }
 
   onTotalRed(total: number) {

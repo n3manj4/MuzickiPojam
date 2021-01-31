@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using SignalMonitoring.API.Persistence;
+using SolrEngine;
 
 namespace SignalMonitoring.API.Managers
 {

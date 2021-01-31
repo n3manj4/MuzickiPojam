@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.SignalR;
 using SignalMonitoring.API.Managers;
+using SignalMonitoring.API.Models;
 using SignalMonitoring.API.Persistence;
+using SolrEngine;
 
 namespace SignalMonitoring.API.Hubs
 {
@@ -19,28 +22,25 @@ namespace SignalMonitoring.API.Hubs
             {
                 await Groups.AddToGroupAsync(Context.ConnectionId, group.Name);
 
-                var player = new Player(Context.ConnectionId, userName);
+                var player = new Player(Context.ConnectionId, userName, group.Team);
                 GamesManager.Games.AddToRoom(group, player);
 
                 var g = GamesManager.Games[group.Id];
 
                 if (g != null && group.MaxPlayers == g.Room.NoOfPlayers)
                 {
-                    await Clients.Group(group.Name).SendCoreAsync("StartGame", new object[]{ g.Room });
+                    await Clients.Group(group.Name).SendAsync("StartGame", g.Room);
                 }
             }
 
-            await Clients.All.SendCoreAsync("GroupReceived", new object[]
-            {
-                GamesManager.Games[group.Id]
-            });
+            await Clients.All.SendAsync("GroupReceived", GamesManager.Games[group.Id]);
         }
 
         private async Task CreateNewGameAsync(GroupModel group, string userName)
 		{
             await Groups.AddToGroupAsync(Context.ConnectionId, group.Name);
 
-            var player = new Player(Context.ConnectionId, userName);
+            var player = new Player(Context.ConnectionId, userName, group.Team);
 
             GamesManager.Games.CreateNewGame(group, player);
         }
@@ -60,14 +60,58 @@ namespace SignalMonitoring.API.Hubs
 
 			await CreateNewGameAsync(g, userName);
 
-            await Clients.Group(g.Name).SendCoreAsync("StartGame", new object[] { g });
+            await Clients.Group(g.Name).SendAsync("StartGame", g);
         }
 
-        public async Task GetResults(string id)
+        public async Task ValidateAnswers(string gameId, List<AnswerModel> answers)
 		{
-            var guid = Guid.Parse(id);
+            var guid = Guid.Parse(gameId);
             var game = GamesManager.Games[guid];
-            var team = game.GetPlayerTeam(Context.ConnectionId);
+            var player = game.GetPlayer(Context.ConnectionId);
+
+            foreach(var answer in answers)
+			{
+                answer.Id = await game.Solr.ValidateAnswer(answer, game.Term);
+
+                game.Manager.AddAndAssignPoints(answer, player.Team);
+			}
+
+            player.Processed = true;
+
+            if (game.IsAllProcessed)
+			{
+                var redResults = GetResultsFor(game.Manager.RedAnswers);
+                var blueResults = GetResultsFor(game.Manager.BlueAnswers);
+
+                await Clients.Group(game.Room.Name).SendCoreAsync("GetResults", new object[]
+                {
+                    redResults,
+                    blueResults
+                });
+			}
 		}
+
+        private List<ResultModel> GetResultsFor(List<AnswerModel> answers)
+		{
+            var results = new List<ResultModel>();
+            if (answers is null)
+			{
+                return results;
+			}
+
+            foreach (var result in answers)
+            {
+                if (!string.IsNullOrEmpty(result.Lyric))
+                {
+                    results.Add(new ResultModel { Answer = result.Lyric, Points = result.PointsAchieved });
+                }
+                else
+                {
+                    results.Add(new ResultModel { Answer = result.Singer + " - " + result.Title, Points = result.PointsAchieved });
+                }
+            }
+
+            return results;
+        }
     }
 }

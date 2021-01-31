@@ -41,7 +41,7 @@ namespace SignalMonitoring.API.Controllers
 
 		// GET: api/Game/5
 		[HttpGet("{id}", Name = "Get")]
-		public async Task<IActionResult> Get(Guid id)
+		public IActionResult Get(Guid id)
 		{
 			var game = GamesManager.Games[id];
 			if (game is null)
@@ -57,14 +57,14 @@ namespace SignalMonitoring.API.Controllers
 		[HttpPost]
 		public async Task<IActionResult> Post([FromBody] SingleGame game)
 		{
-			await Task.Run(() =>
-			{
-				foreach (var answer in game.Answers)
-				{
-					answer.IsCorrectAnswer = Solr.ValidateAnswer(answer, game.Term);
-				}
-			});
+			var solr = new Solr();
 
+			foreach (var answer in game.Answers)
+			{
+				var isValid = await solr.ValidateAnswer(answer, game.Term);
+				answer.PointsAchieved = !string.IsNullOrEmpty(isValid) ? 1 : 0;
+			}
+			
 			return Ok(game.Answers);
 		}
 

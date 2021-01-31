@@ -1,21 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using SignalMonitoring.API.Managers;
 using SolrEngine;
 
 namespace SignalMonitoring.API
 {
-    public class SingleGame
+	public class Game
     {
-        public List<AnswerModel> Answers { get; set; } = new List<AnswerModel>();
-        public string Term { get; set; }
-    }
-    public class Game
-    {
-        public Game()
-        {
-        }
-
         public Game(GroupModel group, Player player, string term)
         {
             Id = group.Id;
@@ -27,11 +19,23 @@ namespace SignalMonitoring.API
 
             IncreaseTeamNumber(group.Team, player);
         }
+        public GroupManager Manager { get; } = new GroupManager();
+        public Solr Solr { get; } = new Solr();
 
         public Team BlueTeam { get; set; }
-        public Guid Id { get; set; }
         public Team RedTeam { get; set; }
+        public Guid Id { get; set; }
         public GroupModel Room { get; set; }
+
+        public bool IsAllProcessed
+		{
+            get
+			{
+                return BlueTeam.IsTeamProcessed && RedTeam.IsTeamProcessed;
+			}
+		}
+
+        public string Term => Room.Term;
 
         public void IncreaseTeamNumber(TeamEnum team, Player player)
         {
@@ -57,84 +61,22 @@ namespace SignalMonitoring.API
             return BlueTeam.Players.Select(x => x.Id).ToList();
         }
 
-        public TeamEnum GetPlayerTeam(string id)
+        public Player GetPlayer(string id)
 		{
-            if (BlueTeam.IsPlayerInTeam(id))
+            var player = BlueTeam.GetPlayer(id);
+            if (player != null)
 			{
-                return TeamEnum.Blue;
+                return player;
 			}
 
-            if (RedTeam.IsPlayerInTeam(id))
-			{
-                return TeamEnum.Red;
-            }
+            player = RedTeam.GetPlayer(id);
 
-            return TeamEnum.Undefined;
-		}
-    }
-
-    public class GroupModel
-    {
-        public int BluePlayersCount { get; set; }
-        public int Duration { get; set; }
-        public Guid Id { get; set; } = Guid.NewGuid();
-        public int MaxPlayers { get; set; }
-        public string Name { get; set; }
-
-        public int NoOfPlayers
-        {
-            get => RedPlayersCount + BluePlayersCount;
-        }
-
-        public int Position { get; set; }
-        public int RedPlayersCount { get; set; }
-        public TeamEnum Team { get; set; }
-        public string Term { get; set; }
-    }
-
-    public enum TeamEnum
-    { 
-        Red,
-        Blue,
-        Undefined
-    }
-
-    public class Team
-    {
-        public Team(int maxPlayers)
-        {
-            MaxPlayers = maxPlayers / 2;
-        }
-
-        public List<AnswerModel> Answers { get; set; } = new List<AnswerModel>();
-        public int MaxPlayers { get; }
-
-        public List<Player> Players { get; } = new List<Player>();
-
-        public void AddPlayer(Player player)
-        {
-            if (MaxPlayers > Players.Count)
+            if (player != null)
             {
-                Players.Add(player);
+                return player;
             }
-        }
 
-        public bool IsPlayerInTeam(string id)
-		{
-            return Players.Any(x => x.Id == id);
+            throw new Exception("Player doesn't exists");
 		}
-    }
-
-    public class Player
-    {
-        public Player(string id, string name)
-        {
-            Id = id;
-            Name = name;
-        }
-
-        public string Id { get; set; }
-
-        public string Name { get; set; }
     }
 }

@@ -13,6 +13,7 @@ namespace SolrEngine
         public string Title { get; set; }
         [SolrField("lyric")]
         public string Lyric { get; set; }
-        public bool IsCorrectAnswer { get; set; }
+        public int PointsAchieved { get; set; }
+        public bool IsCorrect { get => !string.IsNullOrEmpty(Id); }
     }
 }

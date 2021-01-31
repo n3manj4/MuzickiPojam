@@ -16,20 +16,21 @@ namespace SignalMonitoring.API.Controllers
             m_termService = termService;
         }
 
-        //[Authorize]
-        [HttpGet]
-        public async Task<IActionResult> GetTerms()
-        {
-            m_term = m_termService.Term;
-            return Ok(m_term);
-        }
+		//[Authorize]
+		[HttpGet]
+		public IActionResult GetTerms()
+		{
+			m_term = m_termService.Term;
+			return Ok(m_term);
+		}
 
-        [HttpPost]
+		[HttpPost]
         public void Finish(Game game)
         {
-            foreach (var answer in game.RedTeam.Answers)
+            var solr = new Solr();
+            foreach (var answer in game.Manager.RedAnswers)
             {
-                Solr.ValidateAnswer(answer, game.Room.Term);
+				_ = solr.ValidateAnswer(answer, game.Room.Term);
             }
         }
     }

@@ -4,3 +4,4 @@ export class AnswerViewModel {
     lyric: string;
     isCorrectAnswer: boolean
   }
+
