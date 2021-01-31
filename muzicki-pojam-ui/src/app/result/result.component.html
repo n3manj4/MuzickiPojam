@@ -1,9 +1,9 @@
 <div class="container">
-    <div class="left">
+    <div class="left mat-elevation-z">
         <h1 id="red-font">Red team answers</h1>
-        <app-result-table [dataSource]="redTeamResults" (total)="onTotalRed($event)"></app-result-table>
+        <app-result-table class="leftt" [dataSource]="redTeamResults" (total)="onTotalRed($event)"></app-result-table>
     </div>
-    <div class="right">
+    <div class="right mat-elevation-z">
         <h1 id="blue-font">Blue team answers</h1>
         <app-result-table [dataSource]="blueTeamResults" (total)="onTotalBlue($event)"></app-result-table>
     </div>
@@ -19,5 +19,8 @@
         <img src="assets/img/draw.png" alt="Blue won">
         <h1 style="color:orange">It's a draw!</h1>
     </div>
+    <button mat-button mat-icon-button class="float" [routerLink]="'/home'" >
+        <mat-icon>home</mat-icon>
+      </button>
 </div>
   

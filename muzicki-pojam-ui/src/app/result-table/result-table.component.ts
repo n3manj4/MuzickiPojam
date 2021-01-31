@@ -14,6 +14,7 @@ export interface ResultElement {
 })
 export class ResultTableComponent implements OnInit {
 
+  @ViewChild('table') table: MatTable<Element>;
   @Input() dataSource: ResultElement[]
   @Output() total = new EventEmitter<number>();
 

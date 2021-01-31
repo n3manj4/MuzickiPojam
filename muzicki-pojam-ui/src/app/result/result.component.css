@@ -1,4 +1,16 @@
+#red-font {
+    color: red;
+    margin-left: 20px;
+}
 
+#blue-font {
+    color: blue;
+    margin-left: 20px;
+}
+
+#green-font {
+    color: green
+}
 .container {
     height: calc(100vh - 65px);
     display: grid;
@@ -22,6 +34,11 @@
     grid-row-start: 3;
 }
 
+.title {
+    grid-column-start: 3;
+    grid-row-start: 1;
+}
+
 .center {
     display: flex;
     flex-direction: column;
@@ -29,5 +46,30 @@
     align-items: center;
     height: 90%;
   }
+
+.left.mat-elevation-z {
+    box-shadow: 0px 8px 10px -5px rgb(0,0,0), 0px 16px 24px 2px rgb(201, 51, 51), -10px 6px 30px 5px rgb(122, 48, 48);
+  }
+
+.right.mat-elevation-z {
+box-shadow: 0px 8px 10px -5px rgb(0,0,0), 0px 16px 24px 2px rgb(51, 51, 201), 10px 6px 30px 5px rgb(48, 48, 112);
+}
+
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#0C9;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+}
+
+.my-float{
+	margin-top:22px;
+}
 
 
