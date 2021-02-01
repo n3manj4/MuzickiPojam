@@ -1,9 +1,7 @@
-<!--<div class="login-form">
-  <h1 id="title"> naslov</h1>
-  <br><br>
-  <mat-card id="overflow">
+<div class="container">
+  <h1 id="title">NASLOV</h1>
+  <mat-card class="answers mat-elevation-z24">
       <mat-card-content>
-        <h1 id="timer"> {{this.timer}}</h1>
         <mat-form-field appearance="standard" class="form-field" style="float: left;">
           <mat-label>Ime pevača</mat-label>
           <input autocomplete="off" matInput [(ngModel)]="answer.singer" (keyup)="clearLyric()">
@@ -46,4 +44,7 @@
         <button mat-flat-button color="primary" (click)="finish()">Završi</button>
       </mat-card-actions>
   </mat-card>
-</div>-->
+  <div class="center timer"><app-timer></app-timer></div>
+  
+</div>
+

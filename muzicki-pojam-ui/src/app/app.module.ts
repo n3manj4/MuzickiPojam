@@ -34,6 +34,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ResultComponent } from './result/result.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { ResultTableComponent } from './result-table/result-table.component';
+import { TimerComponent } from './timer/timer.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { ResultTableComponent } from './result-table/result-table.component';
     JoinGameComponent,
     ResultComponent,
     ResultTableComponent,
+    TimerComponent,
   ],
   imports: [
     BrowserModule,
