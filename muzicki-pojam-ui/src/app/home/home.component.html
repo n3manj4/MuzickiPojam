@@ -1,11 +1,33 @@
-<div class="login-form"> 
-    <mat-card>
-        <h1>Hello, {{ user }}</h1>
-         <br>
-        <form>
-            <button mat-raised-button [routerLink]="'/new-game'" class="btn-block" color="primary">Create room</button>
-            <button mat-raised-button [routerLink]="'/join-game'" class="btn-block" color="primary">Join room</button>
-            <button mat-raised-button class="btn-block" (click)="startSingleGame()" color="primary">Single match</button>
-        </form>
-    </mat-card>
+<div class="background container">
+    <div class="stage">
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+    </div>
+    <div class="bottom center">
+        <button mat-button (click)="startSingleGame()">Играј сам</button>
+    </div>
+    <div class="bottom center" style="margin-top: 75px;">
+        <button mat-button [routerLink]="'/new-game'">Направи собу</button>
+    </div>
+    <div class="bottom center" style="margin-top: 150px;">
+        <button mat-button [routerLink]="'/join-game'">Уђи у собу</button>
+    </div>
 </div>
