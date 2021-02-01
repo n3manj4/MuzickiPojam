@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-join-game',
   templateUrl: './join-game.component.html',
-  styleUrls: ['./join-game.component.css']
+  styleUrls: ['./join-game.component.scss']
 })
 export class JoinGameComponent implements OnInit {
   @ViewChild('table') table: MatTable<Element>;

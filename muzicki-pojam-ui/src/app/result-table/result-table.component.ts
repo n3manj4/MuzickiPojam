@@ -10,7 +10,7 @@ export interface ResultElement {
 @Component({
   selector: 'app-result-table',
   templateUrl: './result-table.component.html',
-  styleUrls: ['./result-table.component.css']
+  styleUrls: ['./result-table.component.scss']
 })
 export class ResultTableComponent implements OnInit {
 
