@@ -1,7 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: 'Pacifico', 'Kaushan Script', Futura, 'Roboto', 'Trebuchet MS', Helvetica, sans-serif;   }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
 
 .text-center {
     text-align: center;
@@ -20,4 +21,9 @@ body { margin: 0; font-family: 'Pacifico', 'Kaushan Script', Futura, 'Roboto', '
     margin-bottom: 15px;
 }
 
+.background {
+  margin: 0;
+  height: 100vh;
+  background: radial-gradient(circle, darken(dodgerblue, 10%), #1f4f96, #1b2949, #000);
+}
 
