@@ -11,15 +11,22 @@
 #green-font {
     color: green
 }
+
+h1 {
+    color: #fff; 
+    text-align: center; 
+    grid-column-start: 1;
+    grid-column-end: span 5;
+    grid-row-start: 1;
+    align-self: center;
+}
 .container {
-    height: calc(100vh - 65px);
+    height: 100vh;
     display: grid;
     grid-template-columns: 40px auto 50px auto 40px ;
-    grid-template-rows: 10%  50%  auto;
+    grid-template-rows: 20%  50%  auto;
     background: radial-gradient(circle, darken(dodgerblue, 10%), #1f4f96, #1b2949, #000);
 }
-
-
 
 .left {
     grid-column-start: 2;
@@ -47,7 +54,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 90%;
   }
 
 .left.mat-elevation-z {

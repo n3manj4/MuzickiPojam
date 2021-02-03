@@ -36,30 +36,14 @@ export class GameComponent implements OnInit {
       this.router.navigate(["/game", res.id])
       this.initializeGame()
       this.timer = res.duration
-      this.startTimer()
     })
-  }
-
-  startTimer() {
-    const secondsCounter = interval(1000);
-    
-    const subscription = secondsCounter.subscribe(n => {
-      if (this.timer >= 0) {
-        document.getElementById("timer").innerHTML = this.timer
-        this.timer -= 10
-      }
-      else {
-        //this.goToResultPage()
-        subscription.unsubscribe();
-      }
-    });
-    
   }
 
   initializeGame() {
     this.gameService.getGame(this.gameId).subscribe(res => {
       this.game = res
-      document.getElementById("title").innerHTML = this.game.room.term
+      let term = this.game.room.term
+      document.getElementById("title").innerHTML = term.toUpperCase()
     })
   }
   

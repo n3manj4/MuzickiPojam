@@ -1,6 +1,6 @@
-<button mat-button mat-icon-button class="float" [routerLink]="'/home'" >
+<button mat-button mat-icon-button class="float" (click)="logout()" >
     <mat-icon>logout</mat-icon>
 </button>
-<button mat-button mat-icon-button class="float leftbtn" [routerLink]="'/home'" >
+<button mat-button mat-icon-button [routerLink]="'/home'" class="float leftbtn">
     <mat-icon>home</mat-icon>
 </button>

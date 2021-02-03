@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'header-buttons',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderButtonsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auth: AuthService) {
+   }
 
   ngOnInit(): void {
+  }
+
+  logout() {
+    this.auth.logout()
   }
 
 }
