@@ -1,24 +1,24 @@
 <header-buttons></header-buttons>
 <div class="container">
     <div class="left mat-elevation-z">
-        <h1 id="red-font">Red team answers</h1>
+        <h1 id="red-font">Одговори црвеног тима:</h1>
         <app-result-table class="leftt" [dataSource]="redTeamResults" (total)="onTotalRed($event)"></app-result-table>
     </div>
     <div class="right mat-elevation-z">
-        <h1 id="blue-font">Blue team answers</h1>
+        <h1 id="blue-font">Одговори плавог тима:</h1>
         <app-result-table [dataSource]="blueTeamResults" (total)="onTotalBlue($event)"></app-result-table>
     </div>
     <div *ngIf="isRedWon()" class="bottom center" >
         <img src="assets/img/thropy-red.png" alt="Red won">
-        <h1 style="color:red">Red team won!</h1>
+        <h1 style="color:red">Црвени тим је победио!</h1>
     </div>
     <div *ngIf="isBlueWon()" class="bottom center">
         <img src="assets/img/thropy-blue.png" alt="Blue won">
-        <h1 style="color:royalblue">Blue team won!</h1>
+        <h1 style="color:royalblue">Плави тим је победио!</h1>
     </div>
     <div *ngIf="!isBlueWon() && !isRedWon()" class="bottom center">
         <img src="assets/img/draw.png" alt="Blue won">
-        <h1 style="color:orange">It's a draw!</h1>
+        <h1 style="color:orange">Нерешено!</h1>
     </div>
 </div>
   
