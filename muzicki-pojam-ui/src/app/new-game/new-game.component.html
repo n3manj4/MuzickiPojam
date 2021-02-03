@@ -1,16 +1,20 @@
-<div class="login-form"> 
+<header-buttons></header-buttons>
+<div class="center"> 
+  <h1>Направи игру</h1>
   <mat-card>
-    <label>Number of players: <label class="bold">{{ group.maxPlayers }} </label></label><mat-slider class="btn-block" thumbLabel tickInterval="1000" min="2"max="10"step=2 [(ngModel)]="group.maxPlayers"></mat-slider>
-    <label>Game duration: <label class="bold">{{ group.duration }}</label></label><mat-slider class="btn-block" thumbLabel tickInterval="1000" min="60" max="180" step=10 [(ngModel)]="group.duration"> Game duration</mat-slider>
-    <label class="btn-block">Choose team:</label>
+    <label>Број играча: <label class="bold">{{ group.maxPlayers }} </label></label><mat-slider class="btn-block" thumbLabel tickInterval="1000" min="2"max="10"step=2 [(ngModel)]="group.maxPlayers"></mat-slider>
+    <label>Дужина игре: <label class="bold">{{ group.duration }}</label></label><mat-slider class="btn-block" thumbLabel tickInterval="1000" min="60" max="180" step=10 [(ngModel)]="group.duration"> Game duration</mat-slider>
+    <label class="btn-block">Изабери тим:</label>
     <mat-radio-group aria-label="Select an option">
-      <mat-radio-button (change)="this.radioChanged(0)" value="red" checked>Red team</mat-radio-button>
-      <mat-radio-button (change)="this.radioChanged(1)" value="blue">Blue team</mat-radio-button>
+      <mat-radio-button (change)="this.radioChanged(0)" value="red" checked>Црвени тим</mat-radio-button>
+      <mat-radio-button (change)="this.radioChanged(1)" value="blue">Плави тим</mat-radio-button>
     </mat-radio-group>
     <mat-form-field class="btn-block" >
-      <mat-label>Room name</mat-label>
+      <mat-label>Назив собе</mat-label>
       <input autocomplete="off" matInput [(ngModel)]="group.name">
     </mat-form-field>
-    <button mat-raised-button [routerLink]="'/game'" class="mat-raised-button" color="primary" (click)="createGame()">Create game</button>
+    <mat-card-actions align="center"> 
+      <button mat-raised-button [routerLink]="'/game'" class="mat-raised-button" color="primary" (click)="createGame()">Заврши</button>
+    </mat-card-actions> 
   </mat-card>
 </div>

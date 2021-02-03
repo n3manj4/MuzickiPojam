@@ -35,6 +35,7 @@ import { ResultComponent } from './result/result.component';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { ResultTableComponent } from './result-table/result-table.component';
 import { TimerComponent } from './timer/timer.component';
+import { HeaderButtonsComponent } from './header-buttons/header-buttons.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { TimerComponent } from './timer/timer.component';
     ResultComponent,
     ResultTableComponent,
     TimerComponent,
+    HeaderButtonsComponent,
   ],
   imports: [
     BrowserModule,
