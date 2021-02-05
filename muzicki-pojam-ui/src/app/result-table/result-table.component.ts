@@ -26,6 +26,10 @@ export class ResultTableComponent implements OnInit {
   }
 
   getTotalPoints() {
+    if (this.dataSource == null)
+    {
+      return;
+    }
     let result = this.dataSource.map(t => t.points).reduce((acc, value) => acc + value, 0);
     this.total.emit(result)
     return result

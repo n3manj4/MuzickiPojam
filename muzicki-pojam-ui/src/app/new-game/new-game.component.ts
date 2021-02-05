@@ -25,8 +25,6 @@ export class NewGameComponent implements OnInit {
 
   createGame(){
     this.signalService.addToGroup(this.group)
-    console.log(this.group)
-    //this.router.navigate(["/home", this.group.id])
   }
 
   radioChanged(team: TeamEnum){

@@ -24,7 +24,7 @@ namespace SignalMonitoring.API
 
         public Team BlueTeam { get; set; }
         public Team RedTeam { get; set; }
-        public Guid Id { get; set; }
+        public string Id { get; set; }
         public GroupModel Room { get; set; }
 
         public bool IsAllProcessed
@@ -76,7 +76,7 @@ namespace SignalMonitoring.API
                 return player;
             }
 
-            throw new Exception("Player doesn't exists");
+            return new Player();
 		}
     }
 }

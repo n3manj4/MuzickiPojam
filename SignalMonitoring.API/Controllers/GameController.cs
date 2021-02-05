@@ -32,7 +32,7 @@ namespace SignalMonitoring.API.Controllers
 			var g = new GroupModel
 			{
 				Duration = 60,
-				Id = Guid.NewGuid(),
+				Id = Guid.NewGuid().ToString(),
 				Term = m_termService.Term
 			};
 
@@ -41,7 +41,7 @@ namespace SignalMonitoring.API.Controllers
 
 		// GET: api/Game/5
 		[HttpGet("{id}", Name = "Get")]
-		public IActionResult Get(Guid id)
+		public IActionResult Get(string id)
 		{
 			var game = GamesManager.Games[id];
 			if (game is null)
@@ -70,7 +70,7 @@ namespace SignalMonitoring.API.Controllers
 
 		// PUT: api/Game/5
 		[HttpPut("{id}")]
-		public void Put(Guid id, [FromBody] string value)
+		public void Put(string id, [FromBody] string value)
 		{
 			GamesManager.Games[id].Room.Term = value;
 		}

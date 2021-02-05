@@ -3,7 +3,7 @@
   <h1>Направи игру</h1>
   <mat-card>
     <label>Број играча: <label class="bold">{{ group.maxPlayers }} </label></label><mat-slider class="btn-block" thumbLabel tickInterval="1000" min="2"max="10"step=2 [(ngModel)]="group.maxPlayers"></mat-slider>
-    <label>Дужина игре: <label class="bold">{{ group.duration }}</label></label><mat-slider class="btn-block" thumbLabel tickInterval="1000" min="60" max="180" step=10 [(ngModel)]="group.duration"> Game duration</mat-slider>
+    <label>Дужина игре: <label class="bold">{{ group.duration }}</label></label><mat-slider class="btn-block" thumbLabel tickInterval="1000" min="60" max="180" step=10 [(ngModel)]="group.duration">Трајање игре</mat-slider>
     <label class="btn-block">Изабери тим:</label>
     <mat-radio-group aria-label="Select an option">
       <mat-radio-button (change)="this.radioChanged(0)" value="red" checked>Црвени тим</mat-radio-button>

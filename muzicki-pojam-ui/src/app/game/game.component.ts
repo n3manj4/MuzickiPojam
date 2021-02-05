@@ -69,12 +69,14 @@ export class GameComponent implements OnInit {
         answers: this.game.answers,
         term: this.term
       }
-      /*this.gameService.finish(end).subscribe(res =>{
-        console.log(res)
-        this.game.answers = res
-        this.submited = true
-      })*/
-      let id = this.router.url.split("/")[2]
+      let id = this.router.url.split("/")[2];
+      if (id == "single") {
+        this.gameService.finish(end).subscribe(res =>{
+          console.log(res)
+          this.game.answers = res
+          this.submited = true
+        })
+      }
       this.signalService.validateAnswers(id, this.game.answers)
       this.goToResultPage()
     }

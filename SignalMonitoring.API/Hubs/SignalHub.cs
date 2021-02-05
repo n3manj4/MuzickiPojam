@@ -12,7 +12,9 @@ namespace SignalMonitoring.API.Hubs
 {
     public class SignalHub : Hub
     {
-        public async Task JoinGroup(GroupModel group, string userName)
+		private const string SINGLE_GAME = "single";
+
+		public async Task JoinGroup(GroupModel group, string userName)
         {
             if (!GamesManager.Games.Contains(group.Id))
             {
@@ -53,7 +55,7 @@ namespace SignalMonitoring.API.Hubs
             var g = new GroupModel
             {
                 Duration = 60,
-                Id = Guid.NewGuid(),
+                Id = SINGLE_GAME + Guid.NewGuid().ToString(),
                 Term = term.Term,
                 Name = userName
             };
@@ -65,8 +67,7 @@ namespace SignalMonitoring.API.Hubs
 
         public async Task ValidateAnswers(string gameId, List<AnswerModel> answers)
 		{
-            var guid = Guid.Parse(gameId);
-            var game = GamesManager.Games[guid];
+            var game = GamesManager.Games[gameId];
             var player = game.GetPlayer(Context.ConnectionId);
 
             foreach(var answer in answers)
@@ -75,6 +76,20 @@ namespace SignalMonitoring.API.Hubs
 
                 game.Manager.AddAndAssignPoints(answer, player.Team);
 			}
+
+            if (gameId == SINGLE_GAME)
+			{
+                var redResults = GetResultsFor(game.Manager.RedAnswers);
+				foreach (var item in redResults)
+				{
+                    item.Points = item.Points > 0 ? 1 : 0;
+				}
+                await Clients.Group(game.Room.Name).SendCoreAsync("GetResults", new object[]
+                {
+                    redResults,
+                    new List<ResultModel>()
+                });
+            }
 
             player.Processed = true;
 

@@ -6,7 +6,7 @@ namespace SignalMonitoring.API
     {
         public int BluePlayersCount { get; set; }
         public int Duration { get; set; }
-        public Guid Id { get; set; } = Guid.NewGuid();
+        public string Id { get; set; } = Guid.NewGuid().ToString();
         public int MaxPlayers { get; set; }
         public string Name { get; set; }
 

@@ -20,6 +20,6 @@ export class HomeComponent implements OnInit {
 
   startSingleGame() {
     this.signal.startSingleGame(this.user)
-    this.router.navigate(["/game"])
+    this.router.navigate(["/game/single"])
   }
 }

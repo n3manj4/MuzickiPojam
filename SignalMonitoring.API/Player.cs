@@ -2,6 +2,10 @@
 {
 	public class Player
     {
+		public Player()
+		{
+
+		}
         public Player(string id, string name, TeamEnum team)
         {
             Id = id;

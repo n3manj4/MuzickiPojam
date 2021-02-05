@@ -10,7 +10,7 @@ namespace SignalMonitoring.API.Managers
     {
         private static GamesManager s_instance;
         private static readonly object s_padlock = new object();
-        private readonly Dictionary<Guid, Game> m_games = new Dictionary<Guid, Game>();
+        private readonly Dictionary<string, Game> m_games = new Dictionary<string, Game>();
 
         private GamesManager()
         {
@@ -27,7 +27,7 @@ namespace SignalMonitoring.API.Managers
             }
         }
 
-        public Game this[Guid id]
+        public Game this[string id]
         {
             get
             {
@@ -49,7 +49,7 @@ namespace SignalMonitoring.API.Managers
             return m_games.Select(x => x.Value.Room);
         }
 
-        public bool Contains(Guid id)
+        public bool Contains(string id)
         {
             return m_games.ContainsKey(id);
         }

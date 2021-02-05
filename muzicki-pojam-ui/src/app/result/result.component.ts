@@ -5,7 +5,7 @@ import { SignalRService } from '../services/signal-r.service';
 export interface ResultElement {
   position: number;
   answer: string;
-  points: number;
+  points: any;
 }
 
 const ELEMENT_DATA: ResultElement[] = [

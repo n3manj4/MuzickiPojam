@@ -32,6 +32,7 @@ export class TimerComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.timeLeft = TIME_LIMIT
     this.startTimer();
   }
 

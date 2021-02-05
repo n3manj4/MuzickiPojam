@@ -1,0 +1,26 @@
+
+.container {
+    height: 100vh;
+    display: grid;
+    grid-template-columns:  auto 50% auto ;
+    grid-template-rows: 30%  50%  auto;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-self: end;
+    grid-column-start: 2;
+    grid-row-start: 1;
+  }
+
+.result {
+    grid-column-start: 2;
+    grid-row-start: 2;
+} 
+
+h1 {
+    color: #fff; 
+    grid-column-start: 2;
+    grid-row-start: 1;
+}
